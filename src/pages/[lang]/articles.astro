@@ -83,14 +83,20 @@ const tags = posts.flatMap((post) => post.data.tags.map((tag) => tag.id));
             )
             .map((post) => (
               <a
-          href={`/${post.id}`}
+                href={`/${post.id}`}
                 class="post-container"
                 data-tags={post.data.tags.map((tag) => tag.id).join(",")}
               >
                 <div class="post-header">
                   <h3>{post.data.title}</h3>
                   <span class="post-date">
-                    {post.data.createdAt.toLocaleDateString(lang === 'bn' ? 'bn-BD-u-ca-islamic-civil' : 'en-GB-u-ca-islamic-civil').replace(lang === 'bn' ? "যুগ" : "AH", "")}
+                    {post.data.createdAt
+                      .toLocaleDateString(
+                        lang === "bn"
+                          ? "bn-BD-u-ca-islamic-civil"
+                          : "en-GB-u-ca-islamic-civil",
+                      )
+                      .replace(lang === "bn" ? "যুগ" : "AH", "")}
                   </span>
                 </div>
                 <span>{post.data.description}</span>

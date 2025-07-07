@@ -8,7 +8,7 @@ import Layout from "../../layouts/Layout.astro";
 import type { GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import { getCollection } from "astro:content";
 import { giscus } from "spectre:globals";
 
@@ -97,7 +97,11 @@ const tags = post.data.tags.map((tag) => tag.id);
         {
           Array.from(new Set(tags)).map((tag) => (
             <li>
-            <a class="blog-tag" href={`/${lang}/articles?tags=${tag}`} data-tag={tag}>
+              <a
+                class="blog-tag"
+                href={`/${lang}/articles?tags=${tag}`}
+                data-tag={tag}
+              >
                 {tag}
               </a>
             </li>
@@ -112,7 +116,8 @@ const tags = post.data.tags.map((tag) => tag.id);
         <ImageGlow
           quality={100}
           class="article-image"
-s          src={post.data.image}
+          s
+          src={post.data.image}
           alt={post.data.title}
         />
         <div class="header">
@@ -120,10 +125,21 @@ s          src={post.data.image}
             <h1 class="no-mt article-h1">{post.data.title}</h1>
           </div>
           <div class="article-info">
-            <span>{post.data.createdAt.toLocaleDateString(`${lang}-BD-u-ca-islamic-civil`).replace(t("date.replace"), "")}</span>
+            <span
+              >{
+                post.data.createdAt
+                  .toLocaleDateString(`${lang}-BD-u-ca-islamic-civil`)
+                  .replace(t("date.replace"), "")
+              }</span
+            >
             <span>/</span>
             <span
-            >{timeToRead(post).toLocaleString(`${lang}-BD`)} {timeToRead(post) === 1 ? t("article.minuteToRead") : t("article.minutesToRead") }</span
+              >{timeToRead(post).toLocaleString(`${lang}-BD`)}
+              {
+                timeToRead(post) === 1
+                  ? t("article.minuteToRead")
+                  : t("article.minutesToRead")
+              }</span
             >
             <!-- <span>/</span> -->
             <!-- <span>{t("article.topics")}: {post.data.tags.map((tag) => tag.id).join(", ")}</span> -->
@@ -170,9 +186,9 @@ s          src={post.data.image}
 </Layout>
 <script src="../../scripts/toc.ts"></script>
 <style is:global>
-.header {
-  opacity: .8;
-}
+  .header {
+    opacity: 0.8;
+  }
   .toc-card ol {
     padding: 0;
     display: flex;

@@ -7,7 +7,7 @@ export const defaultLang = "bn";
 
 export const ui = {
   en: {
-    "sitename": "Khalid's Shell",
+    sitename: "Khalid's Shell",
     "nav.home": "khalid:~$",
     "nav.articles": "Articles",
     "nav.services": "Services",
@@ -26,10 +26,10 @@ export const ui = {
     "search.noResults": "No results found",
     "error.description": "This page could not be found.",
     "error.back": "Back to the homepage",
-    "footer.copyright": "© Khalid"
+    "footer.copyright": "© Khalid",
   },
   bn: {
-    "sitename": "খালিদের শেল",
+    sitename: "খালিদের শেল",
     "nav.home": "খালিদ:~$",
     "nav.articles": "আর্টিকেল",
     "nav.services": "সার্ভিস",
@@ -48,6 +48,6 @@ export const ui = {
     "search.noResults": "কোন ফলাফল পাওয়া যায়নি",
     "error.description": "পেজটি খুঁজে পাওয়া যায়নি।",
     "error.back": "মূল পেজে ফিরে যান",
-    "footer.copyright": "© খালিদ"
+    "footer.copyright": "© খালিদ",
   },
 } as const;

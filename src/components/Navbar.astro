@@ -45,11 +45,17 @@ const path = Astro.url.pathname;
     </li>
     <li class="nav-separator">/</li>
     <li>
-      <input id="search" type="text" placeholder={t("search.placeholder")} data-message={t("search.placeholder")} data-mobile={t("search.placeholderMobile")} />
+      <input
+        id="search"
+        type="text"
+        placeholder={t("search.placeholder")}
+        data-message={t("search.placeholder")}
+        data-mobile={t("search.placeholderMobile")}
+      />
       <div id="search-results" data-notfound={t("search.noResults")}></div>
     </li>
   </ul>
-    <LanguagePicker />
+  <LanguagePicker />
   <button class="mobile-nav-toggle">
     <Icon
       type="lucide"

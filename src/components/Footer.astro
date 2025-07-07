@@ -5,22 +5,23 @@ import { getLangFromUrl, useTranslations } from "/src/i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
+
 <footer>
   <Card class="footer-card">
-     {t("footer.copyright")} 
+    {t("footer.copyright")}
   </Card>
   <!-- Simple Analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </footer>
 
 <style scoped>
- footer {
- width: 50%;
- height: 25%;
- text-align: center;
- margin: 0 auto 1rem;
- }
- .footer-card {
-  border-radius: 18px;
+  footer {
+    width: 50%;
+    height: 25%;
+    text-align: center;
+    margin: 0 auto 1rem;
+  }
+  .footer-card {
+    border-radius: 18px;
   }
 </style>

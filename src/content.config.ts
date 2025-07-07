@@ -35,7 +35,6 @@ const enInfo = defineCollection({
   }),
 });
 
-
 const socialsbn = defineCollection({
   loader: file("src/content/socials-bn.json"),
   schema: z.object({

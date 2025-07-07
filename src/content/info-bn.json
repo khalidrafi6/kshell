@@ -5,9 +5,9 @@
       "type": "lucide",
       "name": "pencil-line"
     },
-      "text": "লেখক, খালিদের শেল"
+    "text": "লেখক, খালিদের শেল"
   },
-    {
+  {
     "id": 2,
     "icon": {
       "type": "lucide",
@@ -15,7 +15,7 @@
     },
     "type": "lucide",
     "text": "মুসলিম"
-    },
+  },
   {
     "id": 3,
     "icon": {

@@ -35,7 +35,7 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 		<link rel="icon" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 
-{ ((Astro.url.pathname.includes("/bn") || Astro.url.pathname.includes("/en")) || title === "404") ? <title>{title}</title> : <title>{title} | {t("sitename")}</title> }
+{ ((Astro.url.pathname === ("/bn") || Astro.url.pathname === ("/en")) || title === "404") ? <title>{title}</title> : <title>{title} | {t("sitename")}</title> }
 		{description && <meta name="description" content={description} />}
 		<meta name="theme-color" content={themeColor}>
 

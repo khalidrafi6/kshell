@@ -118,14 +118,13 @@ const { Content: Index } = await render(index!);
             )
             .slice(0, 2)
             .map((post) => (
-              <a
-                href={`/${post.id}`}
-                class="post-container"
-              >
+              <a href={`/${post.id}`} class="post-container">
                 <div class="post-header">
                   <h3>{post.data.title}</h3>
                   <span class="post-date">
-              {post.data.createdAt.toLocaleDateString("bn-BD-u-ca-islamic-civil").replace("যুগ", "")}
+                    {post.data.createdAt
+                      .toLocaleDateString("bn-BD-u-ca-islamic-civil")
+                      .replace("যুগ", "")}
                   </span>
                 </div>
                 <span>{post.data.description}</span>
