@@ -1,4 +1,5 @@
-#bg-canvas, #overlay-canvas {
+#bg-canvas,
+#overlay-canvas {
   z-index: -2;
   position: absolute;
   min-height: 100vh;
@@ -7,7 +8,7 @@
   left: 0;
   transition: all 0.15s ease;
   opacity: 0;
-  font-family: 'Geist Mono', monospace;
+  /* font-family: "JetBrains Mono", monospace; */
   user-select: none;
   pointer-events: none;
 }

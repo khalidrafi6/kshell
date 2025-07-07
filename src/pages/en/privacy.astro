@@ -1,0 +1,43 @@
+---
+import "../../styles/index.css";
+
+import Card from "../../components/Card.astro";
+import Layout from "../../layouts/Layout.astro";
+import Icon from "../../components/Icon.astro";
+import { getCollection } from "astro:content";
+import { getEntry } from "astro:content";
+import { render } from "astro:content";
+import { name, openGraph } from "spectre:globals";
+
+const [privacy, quickInfo] = await Promise.all([
+  getEntry("other", "en/privacy"),
+  getCollection("quickInfo"),
+]);
+
+// biome-ignore lint/style/noNonNullAssertion: Should always be defined.
+const { Content: Privacy } = await render(privacy!);
+---
+
+<Layout
+  title={openGraph.en.home.title || name}
+  description={openGraph.en.home.description}
+  pagefindIgnore
+>
+  <div slot="normal">
+    <Card>
+      <div class="header-container">
+        <Icon
+          type="lucide"
+          name="book-check"
+          width={24}
+          height={24}
+          class="glow-icon"
+        />
+        <h2>Privacy Note</h2>
+      </div>
+      <div class="prose">
+        <Privacy />
+      </div>
+    </Card>
+  </div>
+</Layout>

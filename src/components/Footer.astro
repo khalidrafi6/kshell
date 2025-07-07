@@ -1,0 +1,24 @@
+---
+import Card from "/src/components/Card.astro";
+import { getLangFromUrl, useTranslations } from "/src/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<footer>
+  <Card class="footer-card">
+     {t("footer.copyright")} 
+  </Card>
+</footer>
+
+<style scoped>
+ footer {
+ width: 50%;
+ height: 25%;
+ text-align: center;
+ margin: 0 auto 1rem;
+ }
+ .footer-card {
+  border-radius: 18px;
+  }
+</style>

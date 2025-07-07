@@ -4,8 +4,14 @@ import '../styles/globals.css';
 
 import Background from '../components/Background.astro';
 import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 import LayoutGrid from '../components/LayoutGrid.astro';
 import { name, themeColor, twitterHandle } from 'spectre:globals';
+
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 interface Props {
 	title: string;
@@ -22,14 +28,14 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 
-		<title>{title}</title>
+{ ((Astro.url.pathname.includes("/bn") || Astro.url.pathname.includes("/en")) || title === "404") ? <title>{title}</title> : <title>{title} | {t("sitename")}</title> }
 		{description && <meta name="description" content={description} />}
 		<meta name="theme-color" content={themeColor}>
 
@@ -45,7 +51,7 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 		{article && (
 			<meta name="og:type" content="article" />
 			<meta property="article:published_time" content={article.createdAt.toISOString()} />
-			<meta name="author" content={name} />
+			<meta name="author" content={name[lang]} />
 		)}
 
 		{article && article.updatedAt && (
@@ -68,8 +74,9 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 				<slot name="left" slot="left" />
 				<slot name="right" slot="right" />
 			</LayoutGrid>
-			<slot name="404" />
+			<slot name="normal" />
 		</main>
 		<Background />
+    <Footer />
 	</body>
 </html>

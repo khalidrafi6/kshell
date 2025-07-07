@@ -1,0 +1,43 @@
+---
+import "../../styles/index.css";
+
+import Card from "../../components/Card.astro";
+import Layout from "../../layouts/Layout.astro";
+import Icon from "../../components/Icon.astro";
+import { getCollection } from "astro:content";
+import { getEntry } from "astro:content";
+import { render } from "astro:content";
+import { openGraph } from "spectre:globals";
+
+const [services, quickInfo] = await Promise.all([
+  getEntry("other", "en/services"),
+  getCollection("quickInfo"),
+]);
+
+// biome-ignore lint/style/noNonNullAssertion: Should always be defined.
+const { Content: Services } = await render(services!);
+---
+
+<Layout
+  title={openGraph.en.services.title || "Services"}
+  description={openGraph.en.services.description}
+  pagefindIgnore
+>
+  <div slot="normal">
+    <Card>
+      <div class="header-container">
+        <Icon
+          type="lucide"
+          name="cog"
+          width={24}
+          height={24}
+          class="glow-icon"
+        />
+        <h2>Services</h2>
+      </div>
+      <div class="prose">
+        <Services />
+      </div>
+    </Card>
+  </div>
+</Layout>

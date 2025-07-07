@@ -1,0 +1,53 @@
+export const languages = {
+  en: "English",
+  bn: "বাংলা",
+};
+
+export const defaultLang = "bn";
+
+export const ui = {
+  en: {
+    "sitename": "Khalid's Shell",
+    "nav.home": "khalid:~$",
+    "nav.articles": "Articles",
+    "nav.services": "Services",
+    "nav.about": "About",
+    "nav.privacy": "Privacy",
+    "article.topics": "Topics",
+    "article.minuteToRead": "minute to read",
+    "article.minutesToRead": "minutes to read",
+    "article.toc": "Table of contents",
+    "article.filter": "Filter",
+    "article.tags": "Tags",
+    "article.back": "Back to articles",
+    "date.replace": "AH",
+    "search.placeholder": "Search (Ctrl+K)",
+    "search.placeholderMobile": "Search",
+    "search.noResults": "No results found",
+    "error.description": "This page could not be found.",
+    "error.back": "Back to the homepage",
+    "footer.copyright": "© Khalid"
+  },
+  bn: {
+    "sitename": "খালিদের শেল",
+    "nav.home": "খালিদ:~$",
+    "nav.articles": "আর্টিকেল",
+    "nav.services": "সার্ভিস",
+    "nav.about": "পরিচিতি",
+    "nav.privacy": "প্রাইভেসি",
+    "article.topics": "বিষয়",
+    "article.minuteToRead": "মিনিটের পড়া",
+    "article.minutesToRead": "মিনিটের পড়া",
+    "article.toc": "সূচিপত্র",
+    "article.filter": "বাছাই করুন",
+    "article.tags": "ট্যাগ",
+    "article.back": "আর্টিকেল তালিকায় ফিরে যান",
+    "date.replace": "যুগ",
+    "search.placeholder": "খুঁজুন (Ctrl+K)",
+    "search.placeholderMobile": "খুঁজুন",
+    "search.noResults": "কোন ফলাফল পাওয়া যায়নি",
+    "error.description": "পেজটি খুঁজে পাওয়া যায়নি।",
+    "error.back": "মূল পেজে ফিরে যান",
+    "footer.copyright": "© খালিদ"
+  },
+} as const;

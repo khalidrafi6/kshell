@@ -1,16 +1,76 @@
+/* @font-face { */
+/*   font-family: "Geist"; */
+/*   src: url("/fonts/Geist.woff2") format("woff2"); */
+/*   font-weight: 100 900; */
+/*   font-style: normal; */
+/*   font-display: swap; */
+/* } */
+/**/
+/* @font-face { */
+/*   font-family: "Geist Mono"; */
+/*   src: url("/fonts/GeistMono.woff2") format("woff2"); */
+/*   font-weight: 100 900; */
+/*   font-style: normal; */
+/*   font-display: swap; */
+/* } */
+
 @font-face {
-  font-family: 'Geist';
-  src: url('/fonts/Geist.woff2') format('woff2');
-  font-weight: 100 900;
+  font-family: "JetBrains Mono";
+  src:
+    local("JetBrains Mono Light"),
+    url("/fonts/JetBrainsMono-Light.woff2") format("woff2");
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Geist Mono';
-  src: url('/fonts/GeistMono.woff2') format('woff2');
-  font-weight: 100 900;
+  font-family: "JetBrains Mono";
+  src:
+    local("JetBrains Mono Regular"),
+    url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src:
+    local("JetBrains Mono Medium"),
+    url("/fonts/JetBrainsMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src:
+    local("JetBrains Mono SemiBold"),
+    url("/fonts/JetBrainsMono-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src:
+    local("JetBrains Mono Bold"),
+    url("/fonts/JetBrainsMono-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Kalpurush;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src:
+    local("Kalpurush"),
+    url("/fonts/kalpurush.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -19,29 +79,38 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box !important;
+  box-sizing: border-box !important;
 }
 
 html {
-	color-scheme: dark;
+  color-scheme: dark;
   background-color: #0b0b0b;
 }
 
 html,
 body {
-	margin: 0;
+  margin: 0;
 }
 
+html[lang="bn"] {
+/*   font-family: Kalpurush; */
+  font-size: 18px;
+}
+/**/
+/* html[lang="en"] { */
+/*   font-family: "JetBrains Mono", monospace; */
+/* } */
+
 body {
-	-webkit-font-smoothing: antialiased;
-  font-family: 'Geist', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-family: "JetBrains Mono", Kalpurush;
 }
 
 input,
 button,
 textarea,
 select {
-	font: inherit;
+  font: inherit;
 }
 
 h1,
@@ -51,8 +120,8 @@ h4,
 h5,
 h6,
 code {
-	overflow-wrap: anywhere;
-	font-family: 'Geist Mono', monospace;
+  overflow-wrap: anywhere;
+  /* font-family: 'Geist Mono', monospace; */
 }
 
 h1,
@@ -65,31 +134,33 @@ h6 {
 }
 
 button {
-	border: none;
-	outline: none;
-	background: none;
-	padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
 }
 
 p:last-of-type {
   margin-bottom: 0;
 }
 
-pre, pre *, code {
-  font-family: 'Geist Mono', monospace;
+pre,
+pre *,
+code {
+  /* font-family: 'Geist Mono', monospace; */
   line-height: 1;
 }
 
 pre {
   border: 1px solid rgb(#353535);
   overflow-y: hidden;
-  padding: .5rem;
-  border-radius: .25rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
 }
 
 pre.astro-code code {
   display: flex;
   flex-direction: column;
   font-size: 0.875em;
-  gap: .5rem;
+  gap: 0.5rem;
 }

@@ -1,16 +1,20 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import Layout from "../layouts/Layout.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout
   title={"404"}
-  description={"This page could not be found."}
-	pagefindIgnore
+  description={t("error.description")}
+  pagefindIgnore
 >
-  <div class="notfound-container" slot="404">
+  <div class="notfound-container" slot="normal">
     <h1 class="text-glow">404</h1>
-    <p>This page could not be found.</p>
-    <a class="block-link" href="/">← Back to the homepage</a>
+    <p>{t("error.description")}</p>
+    <a class="block-link" href="/">← {t("error.back")}</a>
   </div>
 </Layout>
 <style>

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "icon": {
+      "type": "lucide",
+      "name": "pencil-line"
+    },
+    "text": "Author, Khalid's Shell"
+  },
+  {
+    "id": 2,
+    "icon": {
+      "type": "lucide",
+      "name": "book-open-text"
+    },
+    "text": "Muslim"
+  },
+  {
+    "id": 3,
+    "icon": {
+      "type": "lucide",
+      "name": "earth"
+    },
+    "text": "Bengali"
+  }
+]

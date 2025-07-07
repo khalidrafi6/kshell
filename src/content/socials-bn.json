@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "icon": {
+      "type": "simple-icons",
+      "name": "telegram"
+    },
+    "text": "টেলিগ্রাম",
+    "link": "https://t.me/khalidershell"
+  },
+  {
+    "id": 2,
+    "icon": {
+      "type": "simple-icons",
+      "name": "x"
+    },
+    "text": "টুইটার",
+    "link": "https://x.com/khalidershell"
+    },
+  {
+    "id": 3,
+    "icon": {
+      "type": "simple-icons",
+      "name": "facebook"
+    },
+    "text": "ফেসবুক",
+    "link": "https://www.facebook.com/profile.php?id=61575714120165"
+  }  
+]

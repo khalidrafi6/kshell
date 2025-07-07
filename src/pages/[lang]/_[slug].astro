@@ -1,0 +1,51 @@
+---
+import "../../styles/index.css";
+
+import Card from "../../components/Card.astro";
+import Layout from "../../layouts/Layout.astro";
+import Icon from "../../components/Icon.astro";
+import { getCollection, render } from "astro:content";
+
+import type { GetStaticPaths } from "astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("other", ({ id }) => {
+    return id !== ("bn" || "en");
+  });
+
+  const paths = pages.map((page) => {
+    const [lang, slug] = page.id.split("/");
+    return { params: { lang, slug: "en/services" }, props: page };
+  });
+
+  return paths;
+}
+
+const { lang, slug } = Astro.params;
+const { page } = Astro.props;
+const { Content } = await render(page);
+---
+
+<Layout
+  title={entry.data.title || "Default Title"}
+  description={entry.data.description || "Default Description"}
+  pagefindIgnore
+>
+  <div slot="normal">
+    <Card>
+      <div class="header-container">
+        <Icon
+          type="lucide"
+          name={entry.data.icon || "file"}
+          width={24}
+          height={24}
+          class="glow-icon"
+        />
+        <h2>{entry.data.title || "Default Title"}</h2>
+      </div>
+      <div class="prose">
+        <Content />
+      </div>
+    </Card>
+  </div>
+</Layout>
