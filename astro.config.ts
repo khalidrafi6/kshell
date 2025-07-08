@@ -33,6 +33,7 @@ const config = defineConfig({
     defaultLocale: "bn",
     routing: {
       prefixDefaultLocale: true,
+      redirectToDefaultLocale: false,
     },
   },
   integrations: [
