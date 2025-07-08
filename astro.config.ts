@@ -25,6 +25,9 @@ import { spectreDark } from "./src/ec-theme";
 const config = defineConfig({
   site: "https://blog.khalidrafi.me",
   output: "static",
+  redirects: {
+    "/[lang]/posts/[post]": "/[lang]/[post]"
+  },
   i18n: {
     locales: ["en", "bn"],
     defaultLocale: "bn",
