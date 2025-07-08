@@ -146,7 +146,7 @@ p:last-of-type {
 
 pre,
 pre *,
-code {
+.code {
   font-family: "JetBrains Mono", monospace;
   line-height: 1;
 }

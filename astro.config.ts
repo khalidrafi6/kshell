@@ -35,6 +35,10 @@ const config = defineConfig({
   integrations: [
     expressiveCode({
       themes: [spectreDark],
+            styleOverrides: {
+        // You can also override styles
+        codeFontFamily: "'JetBrains Mono', monospace"
+        },
     }),
     mdx(),
     sitemap(),
