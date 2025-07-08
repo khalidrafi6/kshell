@@ -7,7 +7,7 @@ export const defaultLang = "bn";
 
 export const ui = {
   en: {
-    "sitename": "Khalid's Shell",
+    sitename: "Khalid's Shell",
     "nav.home": "khalid:~$",
     "nav.articles": "Articles",
     "nav.services": "Services",
@@ -29,7 +29,7 @@ export const ui = {
     "footer.copyright": "© Khalid",
   },
   bn: {
-    "sitename": "খালিদের শেল",
+    sitename: "খালিদের শেল",
     "nav.home": "খালিদ:~$",
     "nav.articles": "আর্টিকেল",
     "nav.services": "সার্ভিস",

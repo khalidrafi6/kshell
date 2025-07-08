@@ -9,9 +9,7 @@ import { getEntry } from "astro:content";
 import { render } from "astro:content";
 import { openGraph } from "spectre:globals";
 
-const [services] = await Promise.all([
-  getEntry("other", "en/services"),
-]);
+const [services] = await Promise.all([getEntry("other", "en/services")]);
 
 // biome-ignore lint/style/noNonNullAssertion: Should always be defined.
 const { Content: Services } = await render(services!);

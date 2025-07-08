@@ -90,11 +90,9 @@ const tags = posts.flatMap((post) => post.data.tags.map((tag) => tag.id));
                 <div class="post-header">
                   <h3>{post.data.title}</h3>
                   <span class="post-date">
-                    {
-                post.data.createdAt
-                  .toLocaleDateString(`${lang}-BD-u-ca-islamic-civil`)
-                  .replace(t("date.replace"), "")
-}
+                    {post.data.createdAt
+                      .toLocaleDateString(`${lang}-BD-u-ca-islamic-civil`)
+                      .replace(t("date.replace"), "")}
                   </span>
                 </div>
                 <span>{post.data.description}</span>
