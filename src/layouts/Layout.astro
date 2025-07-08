@@ -24,7 +24,6 @@ interface Props {
 	};
 }
 
-console.log(Astro.routePattern);
 const { title, description, image, pagefindIgnore, article } = Astro.props;
 ---
 
@@ -41,7 +40,8 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 		<meta name="theme-color" content={themeColor}>
 
 		<link rel="canonical" href={Astro.url} />
-
+    
+    <meta property="og:site_name" content={t("sitename")} />
 		<meta name="og:title" content={title} />
 		{description && <meta name="og:description" content={description} />}
 		<meta name="og:image" content={image?.src || '/img/og.png'} />
