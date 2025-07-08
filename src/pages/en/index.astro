@@ -124,7 +124,8 @@ const { Content: Index } = await render(index!);
                 <div class="post-header">
                   <h3>{post.data.title}</h3>
                   <span class="post-date">
-                    {post.data.createdAt.toLocaleDateString()}
+                    {post.data.createdAt.toLocaleDateString(
+                      `en-BD-u-ca-islamic-civil`).replace("AH", "")}
                   </span>
                 </div>
                 <span>{post.data.description}</span>
