@@ -3,17 +3,18 @@ import { languages } from "../i18n/ui";
 import { getLangFromUrl } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
+const url = Astro.url.toString();
 ---
 
 <div class="language-picker">
   <button class="language">
     {
       lang === "en" ? (
-        <a class="active" href="/en">
+    <a class="active" href={Astro.url}>
           English
         </a>
       ) : (
-        <a href="/en">English</a>
+        <a href={url.replace("bn", "en")}>English</a>
       )
     }
   </button>
@@ -34,11 +35,11 @@ const lang = getLangFromUrl(Astro.url);
   <button class="language">
     {
       lang === "bn" ? (
-        <a class="active" href="/bn">
+    <a class="active" href={Astro.url}>
           বাংলা
         </a>
       ) : (
-        <a href="/bn">বাংলা</a>
+      <a href={url.replace("en", "bn")}>বাংলা</a>
       )
     }
   </button>
