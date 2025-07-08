@@ -121,7 +121,7 @@ h5,
 h6,
 code {
   overflow-wrap: anywhere;
-  /* font-family: 'Geist Mono', monospace; */
+  font-family: 'JetBrains Mono', monospace;
 }
 
 h1,
@@ -147,7 +147,7 @@ p:last-of-type {
 pre,
 pre *,
 code {
-  /* font-family: 'Geist Mono', monospace; */
+  font-family: 'JetBrains Mono', monospace;
   line-height: 1;
 }
 

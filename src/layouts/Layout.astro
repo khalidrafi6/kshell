@@ -24,6 +24,7 @@ interface Props {
 	};
 }
 
+console.log(Astro.routePattern);
 const { title, description, image, pagefindIgnore, article } = Astro.props;
 ---
 
@@ -35,7 +36,7 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 		<link rel="icon" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 
-{ ((Astro.url.pathname === ("/bn") || Astro.url.pathname === ("/en")) || title === "404") ? <title>{title}</title> : <title>{title} | {t("sitename")}</title> }
+    { (Astro.routePattern === `/${lang}` || Astro.routePattern === ("/404")) ? <title>{title}</title> : <title>{title} | {t("sitename")}</title> }
 		{description && <meta name="description" content={description} />}
 		<meta name="theme-color" content={themeColor}>
 
@@ -73,8 +74,9 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 			<LayoutGrid>
 				<slot name="left" slot="left" />
 				<slot name="right" slot="right" />
+			<slot name="normal" slot="normal" />
 			</LayoutGrid>
-			<slot name="normal" />
+<slot name="404" />
 		</main>
 		<Background />
     <Footer />

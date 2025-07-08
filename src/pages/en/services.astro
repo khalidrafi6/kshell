@@ -9,9 +9,8 @@ import { getEntry } from "astro:content";
 import { render } from "astro:content";
 import { openGraph } from "spectre:globals";
 
-const [services, quickInfo] = await Promise.all([
+const [services] = await Promise.all([
   getEntry("other", "en/services"),
-  getCollection("quickInfo"),
 ]);
 
 // biome-ignore lint/style/noNonNullAssertion: Should always be defined.
@@ -23,7 +22,7 @@ const { Content: Services } = await render(services!);
   description={openGraph.en.services.description}
   pagefindIgnore
 >
-  <div slot="normal">
+  <div slot="left">
     <Card>
       <div class="header-container">
         <Icon
