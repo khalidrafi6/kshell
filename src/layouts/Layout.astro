@@ -36,18 +36,24 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 
     { (Astro.routePattern === `/${lang}` || Astro.routePattern === ("/404")) ? <title>{title}</title> : <title>{title} | {t("sitename")}</title> }
+
 		{description && <meta name="description" content={description} />}
+
 		<meta name="theme-color" content={themeColor}>
 
 		<link rel="canonical" href={Astro.url} />
     
     <meta property="og:site_name" content={t("sitename")} />
 		<meta name="og:title" content={title} />
-		{description && <meta name="og:description" content={description} />}
+
+    {description && <meta name="og:description" content={description} />}
+
 		<meta name="og:image" content={image?.src || '/img/og.png'} />
-		<meta name="og:url" content={Astro.site} />
-		{!article && <meta name="og:type" content="website" />}
-		<meta name="og:locale" content="en" />
+    <meta name="og:url" content={Astro.site} />
+
+    {!article && <meta name="og:type" content="website" />}
+
+    <meta name="og:locale" content={lang} />
 
 		{article && (
 			<meta name="og:type" content="article" />
@@ -59,13 +65,17 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 			<meta property="article:modified_time" content={article.updatedAt.toISOString()} />
 		)}
 
-		<meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary_large_image" />
+
 		{twitterHandle && (
 			<meta name="twitter:site" content={twitterHandle} />
 			<meta name="twitter:creator" content={twitterHandle} />
 		)}
+
 		<meta name="twitter:title" content={title} />
-		{description && <meta name="twitter:description" content={description} />}
+
+    {description && <meta name="twitter:description" content={description} />}
+
 		<meta name="twitter:image" content={image?.src || '/img/og.png'} />
 	</head>
 	<body>
@@ -74,11 +84,19 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 			<LayoutGrid>
 				<slot name="left" slot="left" />
 				<slot name="right" slot="right" />
-			<slot name="normal" slot="normal" />
-			</LayoutGrid>
-<slot name="404" />
+      </LayoutGrid>
+      <div class="non-grid">
+        <slot name="normal" />
+      </div>
 		</main>
 		<Background />
     <Footer />
 	</body>
 </html>
+<style scoped>
+@media screen and (max-width: 640px) {
+  .non-grid {
+    margin: 0 1rem;
+  }
+  }
+</style>

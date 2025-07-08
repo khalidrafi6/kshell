@@ -23,8 +23,7 @@ const { Content: Services } = await render(services!);
   description={openGraph.bn.services.description}
   pagefindIgnore
 >
-  <div slot="normal">
-    <Card>
+    <Card slot="normal">
       <div class="header-container">
         <Icon
           type="lucide"
@@ -39,5 +38,4 @@ const { Content: Services } = await render(services!);
         <Services />
       </div>
     </Card>
-  </div>
 </Layout>
