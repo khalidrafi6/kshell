@@ -71,7 +71,7 @@ const config = defineConfig({
               "খালিদের তরফ থেকে প্রযুক্তি বিষয়ক টিউটোরিয়াল, পরামর্শ ও কৌশল, সমস্যার সমাধান",
           },
           services: {
-            title: "সার্ভিস",
+            title: "আইটি সার্ভিস",
             description: "সূলভ মূল্যে প্রযুক্তি সার্ভিস নিন খালিদের কাছ থেকে",
           },
         },
@@ -85,7 +85,7 @@ const config = defineConfig({
             description: "Tech Tutorials, Tips and Troubleshooting from Khalid",
           },
           services: {
-            title: "Services",
+            title: "IT Services",
             description: "Get IT services from Khalid at affordable price",
           },
         },

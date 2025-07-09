@@ -9,18 +9,15 @@ import { getEntry } from "astro:content";
 import { render } from "astro:content";
 import { name, openGraph } from "spectre:globals";
 
-const [privacy, quickInfo] = await Promise.all([
-  getEntry("other", "en/privacy"),
-  getCollection("quickInfo"),
-]);
+const privacy = await getEntry("other", "en/privacy");
 
 // biome-ignore lint/style/noNonNullAssertion: Should always be defined.
 const { Content: Privacy } = await render(privacy!);
 ---
 
 <Layout
-  title={openGraph.en.home.title || name}
-  description={openGraph.en.home.description}
+  title={"Privacy Note | Khalid's Shell"}
+  description={"Privacy notes about your visit to this site"}
   pagefindIgnore
 >
   <div slot="normal">
