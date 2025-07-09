@@ -45,7 +45,15 @@ const config = defineConfig({
       },
     }),
     mdx(),
-    sitemap(),
+    sitemap({
+            i18n: {
+        defaultLocale: 'bn',
+        locales: {
+          bn: 'bn',
+          en: 'en',
+        },
+      },
+    }),
     spectre({
       name: {
         bn: "খালিদ",

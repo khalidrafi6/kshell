@@ -25,9 +25,15 @@ const url = Astro.url.toString();
     {
       Object.entries(languages).map(([l, label]) => (
         <li>
-          <a href={`/${l}/`} class={l === lang ? "active" : ""}>
+{l === lang ?
+<a href={Astro.url} class="active">
             {label}
           </a>
+:
+      <a href={url.replace(`${lang}`, `${l}`)}>
+            {label}
+          </a>
+}
         </li>
       ))
     }
