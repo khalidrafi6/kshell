@@ -13,13 +13,13 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
-    "@astrojs/node": "^9.2.2",
+    "@astrojs/node": "^9.3.0",
     "@astrojs/sitemap": "^3.4.1",
-    "@iconify-json/lucide": "^1.2.54",
-    "@iconify-json/simple-icons": "^1.2.41",
+    "@iconify-json/lucide": "^1.2.57",
+    "@iconify-json/simple-icons": "^1.2.42",
     "@iconify/utils": "^2.3.0",
     "@shikijs/themes": "^1.29.2",
-    "astro": "^5.10.2",
+    "astro": "^5.11.0",
     "astro-expressive-code": "^0.38.3",
     "sharp": "^0.33.5"
   },

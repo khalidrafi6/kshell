@@ -68,6 +68,8 @@
   font-style: normal;
   font-weight: 400;
   font-stretch: 100%;
+  size-adjust: 112.5%;
+  /* line-gap-override: 200%; */
   src:
     local("Kalpurush"),
     url("/fonts/kalpurush.woff2") format("woff2");
@@ -94,7 +96,7 @@ body {
 
 html[lang="bn"] {
   /*   font-family: Kalpurush; */
-  font-size: 18px;
+  /* font-size: 18px; */
 }
 /**/
 /* html[lang="en"] { */

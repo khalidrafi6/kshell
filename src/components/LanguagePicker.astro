@@ -23,7 +23,7 @@ const url = Astro.url.toString();
 
   {
     lang === "bn" ? (
-      <button class="language current-lang">
+      <button class="language current-lang" style="padding: 7px">
         <a href={Astro.url}>বাংলা</a>
       </button>
     ) : (
@@ -69,7 +69,7 @@ const url = Astro.url.toString();
     mask-size: 100% 100%;
   }
   .language {
-    padding: 7px;
+    padding: 10px;
     border: 2px solid #353535;
     /* background-color: #15202b; */
     transition:
