@@ -7,7 +7,7 @@ const url = Astro.url.toString();
 ---
 
 <div class="language-picker">
-  <button class="language">
+  <button class="language post-container">
     {
       lang === "en" ? (
         <a class="active" href={Astro.url}>
@@ -21,23 +21,6 @@ const url = Astro.url.toString();
 
   <div id="switch-language"></div>
 
-  <ul class="langpicker-mobile">
-    {
-      Object.entries(languages).map(([l, label]) => (
-        <li>
-{l === lang ?
-<a href={Astro.url} class="active">
-            {label}
-          </a>
-:
-      <a href={url.replace(`${lang}`, `${l}`)}>
-            {label}
-          </a>
-}
-        </li>
-      ))
-    }
-  </ul>
   <button class="language">
     {
       lang === "bn" ? (

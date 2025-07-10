@@ -7,6 +7,7 @@ import Card from "../../components/Card.astro";
 import Layout from "../../layouts/Layout.astro";
 import ImageGlow from "../../components/ImageGlow.astro";
 import Icon from "../../components/Icon.astro";
+import HikmahIcon from "../../components/IconHikmah.astro";
 import { getCollection } from "astro:content";
 import { getEntry } from "astro:content";
 import { render } from "astro:content";
@@ -80,6 +81,12 @@ const { Content: Index } = await render(index!);
             </li>
           ))
         }
+        <li>
+          <a class="socials-link" href="https://hikmah.net/@khalidershell/">
+            <HikmahIcon />
+                          <span>হিকমাহ</span>
+          </a>
+        </li>
       </ul>
     </Card>
   </div>
@@ -135,3 +142,18 @@ const { Content: Index } = await render(index!);
     </Card>
   </div>
 </Layout>
+<style scoped>
+.hikmah-icon {
+  display: inline-block;
+  width: 150px;
+  height: 40px;
+  --svg: url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20140%2028%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M16.0645%2015.251C15.5269%2015.3642%2014.9829%2015.427%2014.4454%2015.4584C13.8755%2015.4898%2013.448%2014.9619%2013.597%2014.4277C13.597%2014.4277%2016.4142%202.7443%2010.3911%201.17938C6.85497%200.261805%202.71004%204.12695%200.767101%2011.1659C0.741195%2011.2539%20-1.34422%2019.0973%201.47303%2023.5469C2.3344%2024.9045%203.83047%2025.91%205.68273%2026.086C6.1037%2026.1237%206.50524%2026.0986%206.90678%2026.0483C6.90678%2026.0483%206.91974%2026.0609%206.92621%2026.0609C12.5024%2025.3004%2015.65%2018.1043%2016.5308%2015.7852C16.6409%2015.4898%2016.3818%2015.1819%2016.0645%2015.251Z%22%20fill%3D%22%2301A48E%22%2F%3E%0A%3Cpath%20d%3D%22M16.9647%2012.7502C17.5023%2012.6371%2018.0463%2012.5742%2018.5838%2012.5428C19.1538%2012.5114%2019.5812%2013.0393%2019.4323%2013.5735C19.4323%2013.5735%2016.615%2025.2569%2022.6381%2026.8218C26.1743%2027.7394%2030.3127%2023.8806%2032.2621%2016.8353C32.288%2016.7473%2034.3735%208.9039%2031.5562%204.45428C30.6948%203.09676%2029.1988%202.0912%2027.3465%201.91522C26.9255%201.87751%2026.7422%201.9146%2026.5%201.91482C26.5%201.91482%2026.1095%201.94036%2026.103%201.94036C20.5268%202.70082%2017.3792%209.8969%2016.4984%2012.216C16.3883%2012.5114%2016.6474%2012.8193%2016.9647%2012.7502Z%22%20fill%3D%22%2301A48E%22%2F%3E%0A%3C%2Fsvg%3E');
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+</style>
