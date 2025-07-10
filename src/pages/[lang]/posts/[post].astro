@@ -64,7 +64,7 @@ const t = useTranslations(lang);
 const post = Astro.props;
 const { Content, headings } = await render(post);
 const tags = post.data.tags.map((tag) => tag.id);
-return Astro.redirect(`/${lang}/${post}`)
+return Astro.redirect(`/${lang}/${post}`);
 ---
 
 <Layout

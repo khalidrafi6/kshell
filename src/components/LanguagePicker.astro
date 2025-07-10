@@ -7,32 +7,33 @@ const url = Astro.url.toString();
 ---
 
 <div class="language-picker">
-  <button class="language post-container">
-    {
-      lang === "en" ? (
-        <a class="active" href={Astro.url}>
-          English
-        </a>
-      ) : (
+  {
+    lang === "en" ? (
+      <button class="language current-lang">
+        <a href={Astro.url}>English</a>
+      </button>
+    ) : (
+      <button class="language">
         <a href={url.replace("bn", "en")}>English</a>
-      )
-    }
-  </button>
+      </button>
+    )
+  }
 
   <div id="switch-language"></div>
 
-  <button class="language">
-    {
-      lang === "bn" ? (
-        <a class="active" href={Astro.url}>
-          বাংলা
-        </a>
-      ) : (
+  {
+    lang === "bn" ? (
+      <button class="language current-lang">
+        <a href={Astro.url}>বাংলা</a>
+      </button>
+    ) : (
+      <button class="language">
         <a href={url.replace("en", "bn")}>বাংলা</a>
-      )
-    }
-  </button>
+      </button>
+    )
+  }
 </div>
+
 <!-- <ul> -->
 <!--   { -->
 <!--     Object.entries(languages).map(([lang, label]) => ( -->
@@ -67,6 +68,27 @@ const url = Astro.url.toString();
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
   }
+  .language {
+    padding: 7px;
+    border: 2px solid #353535;
+    /* background-color: #15202b; */
+    transition:
+      background-color 0.15s ease,
+      border 0.15s ease;
+    /* height: 37px; */
+  }
+  .language:hover {
+    background-color: rgba(var(--primary-rgb), 0.125);
+    border: 2px solid var(--primary);
+    color: white;
+    text-decoration: none;
+  }
+  .current-lang {
+    background-color: rgba(var(--primary-rgb), 0.125);
+    border: 2px solid var(--primary);
+    color: white;
+    text-decoration: none;
+  }
   .langpicker-mobile {
     display: none;
   }
@@ -75,12 +97,12 @@ const url = Astro.url.toString();
     text-decoration: none;
     padding: 0.25rem 0.5rem;
   }
-  a:hover,
-  a:focus-visible,
-  a.active {
-    background-color: var(--primary);
-    outline: none;
-  }
+  /* a:hover, */
+  /* a:focus-visible, */
+  /* a.active { */
+  /*   background-color: var(--primary); */
+  /*   outline: none; */
+  /* } */
   @media screen and (max-width: 600px) {
     .language-picker {
       font-size: 0.8rem;

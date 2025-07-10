@@ -20,19 +20,13 @@ const { Content: Services } = await render(services!);
   description={openGraph.bn.services.description}
   pagefindIgnore
 >
-    <Card slot="normal">
-      <div class="header-container">
-        <Icon
-          type="lucide"
-          name="cog"
-          width={24}
-          height={24}
-          class="glow-icon"
-        />
-        <h2>আইটি সার্ভিস</h2>
-      </div>
-      <div class="prose">
-        <Services />
-      </div>
-    </Card>
+  <Card slot="normal">
+    <div class="header-container">
+      <Icon type="lucide" name="cog" width={24} height={24} class="glow-icon" />
+      <h2>আইটি সার্ভিস</h2>
+    </div>
+    <div class="prose">
+      <Services />
+    </div>
+  </Card>
 </Layout>

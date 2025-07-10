@@ -26,7 +26,7 @@ const config = defineConfig({
   site: "https://blog.khalidrafi.me",
   output: "static",
   redirects: {
-    "/[lang]/posts/[post]": "/[lang]/[post]"
+    "/[lang]/posts/[post]": "/[lang]/[post]",
   },
   i18n: {
     locales: ["en", "bn"],
@@ -46,11 +46,11 @@ const config = defineConfig({
     }),
     mdx(),
     sitemap({
-            i18n: {
-        defaultLocale: 'bn',
+      i18n: {
+        defaultLocale: "bn",
         locales: {
-          bn: 'bn',
-          en: 'en',
+          bn: "bn",
+          en: "en",
         },
       },
     }),
