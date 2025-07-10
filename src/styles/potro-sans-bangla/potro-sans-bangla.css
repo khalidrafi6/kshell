@@ -5,7 +5,7 @@
 	font-weight: 700;
 	font-stretch: 100%;
   size-adjust: 112.5%;
-	src: local("Potro Sans Bangla Bold"), local("PotroSansBangla-Bold"), url(potro-sans-bangla-bold.woff2) format("woff2");
+	src: local("Potro Sans Bangla Bold"), local("PotroSansBangla-Bold"), url("/fonts/potro-sans-bangla-bold.woff2") format("woff2");
 	font-display: swap;
 }
 /* potro-sans-bangla-medium */
@@ -15,7 +15,7 @@
 	font-weight: 500;
 	font-stretch: 100%;
   size-adjust: 112.5%;
-	src: local("Potro Sans Bangla Medium"), local("PotroSansBangla-Medium"), url(potro-sans-bangla-medium.woff2) format("woff2");
+	src: local("Potro Sans Bangla Medium"), local("PotroSansBangla-Medium"), url("/fonts/potro-sans-bangla-medium.woff2") format("woff2");
 	font-display: swap;
 }
 /* potro-sans-bangla */
@@ -25,7 +25,7 @@
 	font-weight: 400;
 	font-stretch: 100%;
   size-adjust: 112.5%;
-	src: local("Potro Sans Bangla Regular"), local("PotroSansBangla-Regular"), url(potro-sans-bangla.woff2) format("woff2");
+	src: local("Potro Sans Bangla Regular"), local("PotroSansBangla-Regular"), url("/fonts/potro-sans-bangla.woff2") format("woff2");
 	font-display: swap;
 }
 /* potro-sans-bangla-semibold */
@@ -35,7 +35,7 @@
 	font-weight: 600;
 	font-stretch: 100%;
   size-adjust: 112.5%;
-	src: local("Potro Sans Bangla SemiBold"), local("PotroSansBangla-SemiBold"), url(potro-sans-bangla-semibold.woff2) format("woff2");
+	src: local("Potro Sans Bangla SemiBold"), local("PotroSansBangla-SemiBold"), url("/fonts/potro-sans-bangla-semibold.woff2") format("woff2");
 	font-display: swap;
 }
 
