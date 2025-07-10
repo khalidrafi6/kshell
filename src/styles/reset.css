@@ -51,6 +51,47 @@
   font-style: normal;
 }
 
+/* potro-sans-bangla-bold */
+@font-face {
+	font-family: Potro Sans Bangla;
+	font-style: normal;
+	font-weight: 700;
+	font-stretch: 100%;
+  size-adjust: 115%;
+	src: local("Potro Sans Bangla Bold"), local("PotroSansBangla-Bold"), url("/fonts/potro-sans/potro-sans-bangla-bold.woff2") format("woff2");
+	font-display: swap;
+}
+/* potro-sans-bangla-medium */
+@font-face {
+	font-family: Potro Sans Bangla;
+	font-style: normal;
+	font-weight: 500;
+	font-stretch: 100%;
+  size-adjust: 115%;
+	src: local("Potro Sans Bangla Medium"), local("PotroSansBangla-Medium"), url("/fonts/potro-sans/potro-sans-bangla-medium.woff2") format("woff2");
+	font-display: swap;
+}
+/* potro-sans-bangla */
+@font-face {
+	font-family: Potro Sans Bangla;
+	font-style: normal;
+	font-weight: 400;
+	font-stretch: 100%;
+  size-adjust: 115%;
+	src: local("Potro Sans Bangla Regular"), local("PotroSansBangla-Regular"), url("/fonts/potro-sans/potro-sans-bangla.woff2") format("woff2");
+	font-display: swap;
+}
+/* potro-sans-bangla-semibold */
+@font-face {
+	font-family: Potro Sans Bangla;
+	font-style: normal;
+	font-weight: 600;
+	font-stretch: 100%;
+  size-adjust: 115%;
+	src: local("Potro Sans Bangla SemiBold"), local("PotroSansBangla-SemiBold"), url("/fonts/potro-sans/potro-sans-bangla-semibold.woff2") format("woff2");
+	font-display: swap;
+}
+
 /* @font-face { */
 /*   font-family: Kalpurush; */
 /*   font-style: normal; */
@@ -102,10 +143,10 @@ body {
   margin: 0;
 }
 
-html[lang="bn"] {
+/* html[lang="bn"] { */
   /*   font-family: Kalpurush; */
   /* font-size: 18px; */
-}
+/* } */
 /**/
 /* html[lang="en"] { */
 /*   font-family: "JetBrains Mono", var(--bangla-font); */
