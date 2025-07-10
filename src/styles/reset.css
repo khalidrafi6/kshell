@@ -1,3 +1,7 @@
+:root {
+  --bangla-font: "Potro Sans Bangla";
+}
+
 @font-face {
   font-family: "JetBrains Mono";
   src:
@@ -11,7 +15,7 @@
 @font-face {
   font-family: "JetBrains Mono";
   src:
-    local("JetBrains Mono Regular"),
+    local("JetBrains Mono"),
     url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
@@ -47,40 +51,38 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: Kalpurush;
-  font-style: normal;
-  font-weight: 400;
-  font-stretch: 100%;
-  size-adjust: 112.5%;
-  /* line-gap-override: 200%; */
-  src:
-    local("Kalpurush"),
-    url("/fonts/kalpurush.woff2") format("woff2");
-  font-display: swap;
-}
+/* @font-face { */
+/*   font-family: Kalpurush; */
+/*   font-style: normal; */
+/*   font-weight: 400; */
+/*   font-stretch: 100%; */
+/*   size-adjust: 112.5%; */
+/*   src: */
+/*     local("Kalpurush"), */
+/*     url("/fonts/kalpurush.woff2") format("woff2"); */
+/*   font-display: swap; */
+/* } */
+/**/
 
-/* bornomala */
-@font-face {
-	font-family: Bornomala;
-	font-style: normal;
-	font-weight: 400;
-	font-stretch: 100%;
-  size-adjust: 112.5%;
-	src: local("Bornomala Regular"), local("Bornomala-Regular"), url("/fonts/bornomala.woff2") format("woff2");
-	font-display: swap;
-}
-
-/* bornomala-bold */
-@font-face {
-	font-family: Bornomala;
-	font-style: normal;
-	font-weight: 700;
-	font-stretch: 100%;
-  size-adjust: 112.5%;
-	src: local("Bornomala Bold"), local("Bornomala-Bold"), url("/fonts/bornomala-bold.woff2") format("woff2");
-	font-display: swap;
-}
+/* @font-face { */
+/* 	font-family: Bornomala; */
+/* 	font-style: normal; */
+/* 	font-weight: 400; */
+/* 	font-stretch: 100%; */
+/*   size-adjust: 112.5%; */
+/* 	src: url("/fonts/bornomala/bornomala.woff2") format("woff2"); */
+/* 	font-display: swap; */
+/* } */
+/**/
+/* @font-face { */
+/* 	font-family: Bornomala; */
+/* 	font-style: normal; */
+/* 	font-weight: 700; */
+/* 	font-stretch: 100%; */
+/*   size-adjust: 112.5%; */
+/* 	src: local("Bornomala Bold"), local("Bornomala-Bold"), url("/fonts/bornomala/bornomala-bold.woff2") format("woff2"); */
+/* 	font-display: swap; */
+/* } */
 
 /* From https://github.com/withstudiocms/ui */
 
@@ -106,12 +108,12 @@ html[lang="bn"] {
 }
 /**/
 /* html[lang="en"] { */
-/*   font-family: "JetBrains Mono", monospace; */
+/*   font-family: "JetBrains Mono", var(--bangla-font); */
 /* } */
 
 body {
   -webkit-font-smoothing: antialiased;
-  font-family: "JetBrains Mono", Bornomala;
+  font-family: "JetBrains Mono", var(--bangla-font);
 }
 
 input,
@@ -129,7 +131,7 @@ h5,
 h6,
 code {
   overflow-wrap: anywhere;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", var(--bangla-font);
 }
 
 h1,
@@ -155,7 +157,7 @@ p:last-of-type {
 pre,
 pre *,
 .code {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", var(--bangla-font);
   line-height: 1;
 }
 
