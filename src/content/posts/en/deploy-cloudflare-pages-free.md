@@ -1,5 +1,5 @@
 +++
-title = "How to Deploy Your Hugo Site to Cloudflare Pages"
+title = "How to Deploy Your Site to Cloudflare Pages For Free"
 createdAt = 2025-05-19
 #dateFormat = "2006-01-02" # This value can be configured for per-post date formatting
 image = "../../assets/hugo-deploy-cloudflare-pages.png"

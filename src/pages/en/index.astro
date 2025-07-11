@@ -125,7 +125,7 @@ const { Content: Index } = await render(index!);
                   <h3>{post.data.title}</h3>
                   <span class="post-date">
                     {post.data.createdAt
-                      .toLocaleDateString("en-BD-u-ca-islamic-civil")
+                      .toLocaleDateString("en-GB-u-ca-islamic-civil")
                       .replace("AH", "")}
                   </span>
                 </div>
@@ -135,7 +135,7 @@ const { Content: Index } = await render(index!);
         }
       </div>
       <div class="button-box">
-<button><a href="articles">View More</a></button>
+        <button><a href="/en/articles">View More</a></button>
         </div>
     </Card>
   </div>
