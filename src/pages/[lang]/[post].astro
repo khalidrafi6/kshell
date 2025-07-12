@@ -59,6 +59,11 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const lang = getLangFromUrl(Astro.url);
+if (lang === "bn") {
+const loc = "bn-BD"; 
+} else {
+  const loc = "en-GB";
+}
 const t = useTranslations(lang);
 
 const post = Astro.props;

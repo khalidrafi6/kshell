@@ -12,6 +12,10 @@ const url = Astro.url.toString();
       <button class="language current-lang">
         <a href={Astro.url}>English</a>
       </button>
+    ) : url.includes("404") ? (
+      <button class="language">
+        <a href={url.replace("bn/404", "en")}>English</a>
+      </button>
     ) : (
       <button class="language">
         <a href={url.replace("bn", "en")}>English</a>
@@ -20,54 +24,20 @@ const url = Astro.url.toString();
   }
 
   <div id="switch-language"></div>
-    <ul class="langpicker-mobile">
-
-
+  <ul class="langpicker-mobile">
     {
-
-
       Object.entries(languages).map(([l, label]) => (
-
-
         <li>
-
-
-{l === lang ?
-
-
-<a href={Astro.url} class="current-lang">
-
-
-            {label}
-
-
-          </a>
-
-
-:
-
-
-      <a href={url.replace(`${lang}`, `${l}`)}>
-
-
-            {label}
-
-
-          </a>
-
-
-}
-
-
+          {l === lang ? (
+            <a href={Astro.url} class="current-lang">
+              {label}
+            </a>
+          ) : (
+            <a href={url.replace(`${lang}`, `${l}`)}>{label}</a>
+          )}
         </li>
-
-
       ))
-
-
     }
-
-
   </ul>
 
   {
@@ -75,9 +45,13 @@ const url = Astro.url.toString();
       <button class="language current-lang" style="padding: 7px">
         <a href={Astro.url}>বাংলা</a>
       </button>
+    ) : url.includes("404") ? (
+      <button class="language">
+        <a href={url.replace("en/404", "bn")}>English</a>
+      </button>
     ) : (
       <button class="language">
-        <a href={url.replace("en", "bn")}>বাংলা</a>
+        <a href={url.replace("en", "bn")}>English</a>
       </button>
     )
   }
@@ -178,8 +152,7 @@ const url = Astro.url.toString();
       margin: 4px 0;
     }
     .current-lang {
-
-    background-color: var(--primary);
+      background-color: var(--primary);
       outline: none;
     }
   }

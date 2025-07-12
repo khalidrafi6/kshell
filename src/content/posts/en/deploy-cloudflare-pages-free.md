@@ -6,10 +6,10 @@ image = "../../assets/hugo-deploy-cloudflare-pages.png"
 Toc = true
 tags = ["Cloudflare Pages", "Hugo", "Hosting and Deployment", "Static Site", "GitHub"]
 keywords = ["", ""]
-description = "Learn how to deploy your static site generated with Hugo to Cloudflare Pages"
+description = "Learn how to deploy your static site generated to Cloudflare Pages"
 +++
 
-Cloudflare Pages is a nice option for hosting a static site. They offer many features for site security, speed and optimization compared to Github Pages. They also seem very promising for privacy, though I'm unsure [how genuine that is](https://www.simpleanalytics.com/blog/why-simple-analytics-is-a-great-alternative-to-cloudflare-web-analytics#privacy)! Remember, they're an American company. But, that's out of the scope for this article. This guide focuses on the process of deploying a Hugo site to Cloudflare Pages - a platform [we use ourselves](https://blog.khalidrafi.me/en/privacy) for this very site! Though the Cloudflare Docs covers much of the process, it lacks some info for a Hugo site. So, I'll share with you what I learnt from my own experience to save you some headache. Cloudflare offers three ways to deploy your static site to Pages. I'll cover the **Git Integration** method to deploy your Hugo site to Cloudflare Pages. With this, you can simply push your commits to GitHub to trigger a deployment just like GitHub Pages. Alright, let's begin!
+Cloudflare Pages is a nice option for hosting a static site. They offer many features for site security, speed and optimization compared to Github Pages. They also look very promising for privacy, though I'm unsure [how genuine that is](https://www.simpleanalytics.com/blog/why-simple-analytics-is-a-great-alternative-to-cloudflare-web-analytics#privacy)! Remember, they're an American company. But, that's out of the scope for this article. This guide focuses on the process of deploying your site to Cloudflare Pages - a platform [I myself use](https://blog.khalidrafi.me/en/privacy) for this very site! The Cloudflare Docs covers much of the process. But, it lacks some info if you're using Hugo. So, I'll share with you some extra info what I learnt from my own experience with Hugo to save you some headache. Cloudflare offers three ways to deploy your static site to Pages. I'll cover the **Git Integration** method to deploy your site to Cloudflare Pages. With this, you can simply push your commits to GitHub to trigger a deployment just like GitHub Pages. Alright, let's begin!
 
 ## Connect Your GitHub Repo to Pages
 
@@ -25,12 +25,10 @@ Cloudflare Pages is a nice option for hosting a static site. They offer many fea
 
 1. Now, set your **Project name**. A subdomain will be created to the pages.dev domain by this name.
 2. Choose your **Production branch**. This branch will be used to deploy the production version of your site. This is usually `main` or `master`. Rest of the branches will be used for preview deployments.
-3. Under **Build settings**, choose **Hugo** as your **Framework preset**.
-4. Enter `hugo` in **Build command** field.
-5. Hugo publishes your site to `public/`. So, your **Build output directory** should be `public`.
-6. Cloudflare uses a very old version of Hugo as their default (v0.118.2). If you want to use a newer version, add an **Environment Variable** by the name `HUGO_VERSION`. Set the version number (e.g. `0.147.0`) in the **Value** field.
-7. Now, select **Save & Deploy**. Cloudflare will start building your site and deploy it to ~~Region: Earth~~ Cloudflare's global network.
-8. You're done. If you want to use a custom domain, now select **Add a custom domain** and move to the next section. Otherwise, select **Continue to project**. You will be directed to a dashboard where you can see your project info, deployment status, production URL, current deployments etc. You can also configure other aspects of your site from here.
+3. Under **Build settings**, choose your framework name (e.g. Hugo, Astro etc.) as your **Framework preset**. For further details, read [Framework guides](https://developers.cloudflare.com/pages/framework-guides/).
+4. Cloudflare uses a very old version of Hugo as their default (v0.118.2). If you want to use a newer version, add an **Environment Variable** by the name `HUGO_VERSION`. Set the version number (e.g. `0.147.0`) in the **Value** field.
+5. Now, select **Save & Deploy**. Cloudflare will start building your site and deploy it to ~~Region: Earth~~ Cloudflare's global network.
+6. You're done. If you want to use a custom domain, now select **Add a custom domain** and move to the next section. Otherwise, select **Continue to project**. You will be directed to a dashboard where you can see your project info, deployment status, production URL, current deployments etc. You can also configure other aspects of your site from here.
 
 ## Set up a custom domain
 

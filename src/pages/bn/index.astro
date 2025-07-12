@@ -18,7 +18,10 @@ const aboutURL = getRelativeLocaleUrl("en", "about");
 
 const [posts, index, quickInfo, socials] = await Promise.all([
   getCollection("posts", ({ id, data }) => {
-    return id.startsWith("bn/") && (import.meta.env.PROD ? data.draft !== true : data.draft === true);
+    return (
+      id.startsWith("bn/") &&
+      (import.meta.env.PROD ? data.draft !== true : data.draft === true)
+    );
   }),
   getEntry("other", "bn"),
   getCollection("bnInfo"),
@@ -141,7 +144,7 @@ const { Content: Index } = await render(index!);
       </div>
       <div class="button-box">
         <button><a href="/bn/articles">আরো দেখুন</a></button>
-        </div>
+      </div>
     </Card>
   </div>
 </Layout>
