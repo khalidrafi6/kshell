@@ -199,14 +199,14 @@ const tags = post.data.tags.map((tag) => tag.id);
 <button class="reaction-btn love">❤️</button>
 <button class="reaction-btn excellent">⚡️</button>
 
-        <p id="success_message" data-message={t("feedback.response")}></p>
+        <p id="feedback_message" data-success={t("feedback.success")} data-error={t("feedback.error")}></p>
 
 </div>
 <script>
 
 const btn = document.getElementsByClassName("reaction-btn");
 const titleElement = document.getElementById("feedback_title");
-const messageElement = document.getElementById("success_message");
+const messageElement = document.getElementById("feedback_message");
 
 Array.from(btn).forEach((button) => {
   button.addEventListener("click", () => {
@@ -224,15 +224,23 @@ Array.from(btn).forEach((button) => {
 
 
 function feedback(reaction) {
-sa_event("feedback_" + reaction);
+  try {
+    sa_event("feedback_" + reaction);
 s_msg();
+  } catch (error) {
+    e_msg();
+  } 
 }
 
          function s_msg() {
 
-                document.getElementById("success_message").innerHTML = messageElement.dataset.message;
+                document.getElementById("feedback_message").innerHTML = messageElement.dataset.success;
 
          }
+
+        function e_msg() {
+          document.getElementById("feedback_message").innerHTML = messageElement.dataset.error;
+        }
 
 </script>
     </Card>
