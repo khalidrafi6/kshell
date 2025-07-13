@@ -244,9 +244,9 @@ s_msg();
 
 </script>
     </Card>
-    <Card class="comments-card">
       {
         lang === "bn" ? (
+    <Card class="comments-card-bn">
           <div class="comments" style="display: flex" data-pagefind-ignore>
             <script
               async
@@ -257,7 +257,9 @@ s_msg();
               data-dark="1"
             />
           </div>
+    </Card>
         ) : (
+    <Card class="comments-card-en">
           <div class="comments" data-pagefind-ignore>
             <script
               async
@@ -269,9 +271,9 @@ s_msg();
               data-dark="1"
             />
           </div>
+    </Card>
         )
       }
-    </Card>
   </article>
 </Layout>
 <script src="../../scripts/toc.ts"></script>
