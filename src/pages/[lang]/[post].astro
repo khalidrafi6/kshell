@@ -190,7 +190,7 @@ const tags = post.data.tags.map((tag) => tag.id);
     <Card class="reactions-card">
 <div>
 
-        <p>{t("feedback.title")}</p>
+        <p id="feedback_title">{t("feedback.title")}</p>
 
 <button class="reaction-btn good">👍</button>
 
@@ -205,13 +205,23 @@ const tags = post.data.tags.map((tag) => tag.id);
 <script>
 
 const btn = document.getElementsByClassName("reaction-btn");
+const titleElement = document.getElementById("feedback_title");
 const messageElement = document.getElementById("success_message");
 
 Array.from(btn).forEach((button) => {
   button.addEventListener("click", () => {
+    remove();
     feedback("test");
   });
 });
+
+function remove() {
+  titleElement.remove();
+Array.from(btn).forEach((button) => {
+    button.remove();
+  });
+}
+
 
 function feedback(reaction) {
 sa_event("feedback_" + reaction);
