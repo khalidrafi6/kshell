@@ -90,6 +90,7 @@ const config = defineConfig({
           },
         },
       },
+      twitterHandle: "@khalidershell",
       // giscus: {
       //   repository: GISCUS_REPO,
       //   repositoryId: GISCUS_REPO_ID,

@@ -12,11 +12,7 @@ const url = Astro.url.toString();
       <button class="language current-lang">
         <a href={Astro.url}>English</a>
       </button>
-    ) : url.includes("404") ? (
-      <button class="language">
-        <a href={url.replace("bn/404", "en")}>English</a>
-      </button>
-    ) : (
+    )  : (
       <button class="language">
         <a href={url.replace("bn", "en")}>English</a>
       </button>
@@ -45,13 +41,9 @@ const url = Astro.url.toString();
       <button class="language current-lang" style="padding: 7px">
         <a href={Astro.url}>বাংলা</a>
       </button>
-    ) : url.includes("404") ? (
-      <button class="language">
-        <a href={url.replace("en/404", "bn")}>English</a>
-      </button>
     ) : (
       <button class="language">
-        <a href={url.replace("en", "bn")}>English</a>
+        <a href={url.replace("en", "bn")}>বাংলা</a>
       </button>
     )
   }
@@ -66,9 +58,9 @@ const url = Astro.url.toString();
 <!--     )) -->
 <!--   } -->
 <!-- </ul> -->
-<script>
-  let switchLanguage = document.getElementById("#switch-language");
-</script>
+<!-- <script> -->
+<!--   let switchLanguage = document.getElementById("#switch-language"); -->
+<!-- </script> -->
 
 <style scoped>
   .language-picker {

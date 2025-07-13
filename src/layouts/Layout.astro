@@ -28,7 +28,7 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang={lang}>
+<html lang={lang} style="font-family: 'JetBrains Mono', 'Potro Sans Bangla';">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -41,7 +41,7 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 
 		<meta name="theme-color" content={themeColor}>
 
-		<link rel="canonical" href={Astro.url} />
+    <link rel="canonical" href=`${Astro.site}${Astro.url.pathname}` />
     
     <meta property="og:site_name" content={t("sitename")} />
 		<meta name="og:title" content={title} />

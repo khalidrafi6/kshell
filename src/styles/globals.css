@@ -38,6 +38,7 @@ button:hover {
   border: 2px solid var(--primary);
   color: white;
   text-decoration: none;
+  cursor: pointer;
 }
 
 button a {

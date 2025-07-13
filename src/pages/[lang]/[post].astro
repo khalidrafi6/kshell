@@ -187,6 +187,45 @@ const tags = post.data.tags.map((tag) => tag.id);
     <!--     </Card> -->
     <!--   ) -->
     <!-- } -->
+    <Card class="reactions-card">
+<div>
+
+        <p>{t("feedback.title")}</p>
+
+<button class="reaction-btn good">👍</button>
+
+<button class="reaction-btn bad">👎</button>
+
+<button class="reaction-btn love">❤️</button>
+<button class="reaction-btn excellent">⚡️</button>
+
+        <p id="success_message" data-message={t("feedback.response")}></p>
+
+</div>
+<script>
+
+const btn = document.getElementsByClassName("reaction-btn");
+const messageElement = document.getElementById("success_message");
+
+Array.from(btn).forEach((button) => {
+  button.addEventListener("click", () => {
+    feedback("test");
+  });
+});
+
+function feedback(reaction) {
+sa_event("feedback_" + reaction);
+s_msg();
+}
+
+         function s_msg() {
+
+                document.getElementById("success_message").innerHTML = messageElement.dataset.message;
+
+         }
+
+</script>
+    </Card>
     <Card class="comments-card">
       {
         lang === "bn" ? (
@@ -269,6 +308,10 @@ const tags = post.data.tags.map((tag) => tag.id);
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+
+  .reactions-card {
+    text-align: center;
   }
 
   .comments * {
