@@ -211,7 +211,7 @@ const messageElement = document.getElementById("feedback_message");
 Array.from(btn).forEach((button) => {
   button.addEventListener("click", () => {
     remove();
-    feedback("test");
+    feedback(button.classList[1]);
   });
 });
 
