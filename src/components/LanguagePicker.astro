@@ -12,7 +12,7 @@ const url = Astro.url.toString();
       <button class="language current-lang">
         <a href={Astro.url}>English</a>
       </button>
-    )  : (
+    ) : (
       <button class="language">
         <a href={url.replace("bn", "en")}>English</a>
       </button>

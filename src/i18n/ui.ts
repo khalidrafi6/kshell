@@ -26,7 +26,8 @@ export const ui = {
     "search.noResults": "No results found",
     "feedback.title": "How was the article?",
     "feedback.success": "Thanks for your feedback!",
-    "feedback.error": "Error recording your feedback. Please unblock <code>scripts.simpleanalyticscdn.com</code> in your ads/tracking blocker and turn off <b>Do Not Track</b> in your browser. <a href='/en/privacy'>Learn more</a>.",
+    "feedback.error":
+      "Error recording your feedback. Please unblock <code>scripts.simpleanalyticscdn.com</code> in your ads/tracking blocker and turn off <b>Do Not Track</b> in your browser. <a href='/en/privacy'>Learn more</a>.",
     "error.description": "This page could not be found.",
     "error.back": "Back to the homepage",
     "footer.copyright": "© Khalid",
@@ -50,7 +51,8 @@ export const ui = {
     "search.placeholderMobile": "🔍 খুঁজুন",
     "feedback.title": "এই লেখাটি সম্পর্কে আপনার অনুভূতি কী?",
     "feedback.success": "আপনার মতামতের জন্য ধন্যবাদ!",
-    "feedback.error": "দুঃখিত! আপনার মতামত রেকর্ড করা যায় নি। অনুগ্রহ করে <code>scripts.simpleanalyticscdn.com</code> ডোমেইনটিকে আপনার অ্যাড/ট্র্যাকিং ব্লকারে আনব্লক করুন এবং ব্রাউজারে <b>Do Not Track</b> বন্ধ করুন। <a href='/bn/privacy'>বিস্তারিত জানুন</a>।",
+    "feedback.error":
+      "দুঃখিত! আপনার মতামত রেকর্ড করা যায় নি। অনুগ্রহ করে <code>scripts.simpleanalyticscdn.com</code> ডোমেইনটিকে আপনার অ্যাড/ট্র্যাকিং ব্লকারে আনব্লক করুন এবং ব্রাউজারে <b>Do Not Track</b> বন্ধ করুন। <a href='/bn/privacy'>বিস্তারিত জানুন</a>।",
     "search.noResults": "কোন ফলাফল পাওয়া যায়নি",
     "error.description": "পেজটি খুঁজে পাওয়া যায়নি।",
     "error.back": "মূল পেজে ফিরে যান",
