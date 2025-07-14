@@ -10,11 +10,13 @@ const url = Astro.url.toString();
   {
     lang === "en" ? (
       <button class="language current-lang">
-        <a href={Astro.url}>English</a>
+        <!-- <a href={Astro.url}>English</a> -->
+    <a href="/en">English</a>
       </button>
     ) : (
       <button class="language">
-        <a href={url.replace("bn", "en")}>English</a>
+        <!-- <a href={url.replace("bn", "en")}>English</a> -->
+    <a href="/en">English</a>
       </button>
     )
   }
@@ -39,11 +41,13 @@ const url = Astro.url.toString();
   {
     lang === "bn" ? (
       <button class="language current-lang" style="padding: 7px">
-        <a href={Astro.url}>বাংলা</a>
+    <a href="/bn">বাংলা</a>
+        <!-- <a href={Astro.url}>বাংলা</a> -->
       </button>
     ) : (
       <button class="language">
-        <a href={url.replace("en", "bn")}>বাংলা</a>
+    <a href="/bn">বাংলা</a>
+        <!-- <a href={url.replace("en", "bn")}>বাংলা</a> -->
       </button>
     )
   }

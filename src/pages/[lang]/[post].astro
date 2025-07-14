@@ -45,7 +45,7 @@ function timeToRead(post: CollectionEntry<"posts">): number {
 export const getStaticPaths = (async () => {
   const posts = await getCollection(
     "posts",
-    (post) => post.data.draft !== true,
+    (post) => (import.meta.env.PROD ? post.data.draft !== true : true),
   );
 
   const paths = posts.map((post) => {
@@ -59,11 +59,11 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const lang = getLangFromUrl(Astro.url);
-if (lang === "bn") {
-const loc = "bn-BD"; 
-} else {
-  const loc = "en-GB";
-}
+// if (lang === "bn") {
+// const loc = "bn-BD"; 
+// } else {
+//   const loc = "en-GB";
+// }
 const t = useTranslations(lang);
 
 const post = Astro.props;
@@ -118,13 +118,15 @@ const tags = post.data.tags.map((tag) => tag.id);
   <article slot="right" data-pagefind-body>
     <Card>
       <div class="article-header" id="_top" data-pagefind-ignore>
+        {post.data.image ? 
         <ImageGlow
           quality={100}
           class="article-image"
-          s
           src={post.data.image}
           alt={post.data.title}
         />
+        : null
+}
         <div class="header">
           <div>
             <h1 class="no-mt article-h1">{post.data.title}</h1>
