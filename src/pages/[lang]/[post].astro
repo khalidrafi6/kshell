@@ -81,22 +81,7 @@ const tags = post.data.tags.map((tag) => tag.id);
   }}
 >
   <div class="left" slot="left">
-    <Card class="toc-card">
-      <h2 class="no-mt">{t("article.toc")}</h2>
-      <ol>
-        <li class="toc-li">
-          <a href={`#_top`} class="active">{post.data.title}</a>
-        </li>
-        {
-          headings.map((heading, i) => (
-            <li class="toc-li" data-depth={heading.depth}>
-              <a href={`#${heading.slug}`}>{heading.text}</a>
-            </li>
-          ))
-        }
-      </ol>
-    </Card>
-    <Card class="flex-col-card tags-card">
+    <Card class="tags-card">
       <h2 class="no-mt">{t("article.topics")}</h2>
       <ul class="tags-list">
         {
@@ -113,6 +98,21 @@ const tags = post.data.tags.map((tag) => tag.id);
           ))
         }
       </ul>
+    </Card>
+    <Card class="toc-card">
+      <h2 class="no-mt">{t("article.toc")}</h2>
+      <ol>
+        <li class="toc-li">
+          <a href={`#_top`} class="active">{post.data.title}</a>
+        </li>
+        {
+          headings.map((heading, i) => (
+            <li class="toc-li" data-depth={heading.depth}>
+              <a href={`#${heading.slug}`}>{heading.text}</a>
+            </li>
+          ))
+        }
+      </ol>
     </Card>
   </div>
   <article slot="right" data-pagefind-body>
@@ -288,6 +288,16 @@ s_msg();
   .header {
     opacity: 0.8;
   }
+
+
+.tags-card {
+  /* position: sticky; */
+  /* top: 2rem; */
+  /* min-width: 0; */
+  margin-bottom: 1rem;
+}
+
+
   .toc-card ol {
     padding: 0;
     display: flex;
