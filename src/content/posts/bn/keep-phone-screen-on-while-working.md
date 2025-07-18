@@ -3,6 +3,7 @@ title = "কাজ করার সময় যেভাবে সহজেই ফ
 createdAt = 2025-07-18 # +1 for Hijri
 image = "/src/content/assets/keep-phone-screen-on-while-working.png"
 tags = ["অ্যান্ড্রয়েড", "সমস্যার সমাধান", "টিউটোরিয়াল"]
+draft = true
 description = "কাজ করছেন আর বারবার ফোনের স্ক্রিন বন্ধ হয়ে যাচ্ছে? জেনে নিন কীভাবে কাজের সময় নিজের পাশাপাশি মোবাইলকেও কফি খাইয়ে জাগিয়ে রাখবেন।"
 telegram = ""
 +++
