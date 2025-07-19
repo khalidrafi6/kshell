@@ -184,6 +184,11 @@ ol li a.active {
     padding: 0;
     color: white;
   }
+
+  .screenshot {
+    width: inherit;
+    height: auto;
+  }
 }
 
 code:not(.astro-code code) {
