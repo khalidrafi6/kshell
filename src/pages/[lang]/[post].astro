@@ -154,6 +154,13 @@ const tags = post.data.tags.map((tag) => tag.id);
         </div>
       </div>
       <Content />
+      {post.data.affiliate ?
+<script>
+      const aff = document.getElementById("aff_link");
+      aff.addEventListener("click", () => {sa_event("aff_link")});
+</script>
+  : null
+      }
       <hr class="end-of-article" />
       <a href=`/${lang}/articles` class="block-link" data-pagefind-ignore
         >← {t("article.back")}</a

@@ -85,6 +85,7 @@ const posts = defineCollection({
       draft: z.boolean().optional().default(false),
       image: image().optional(),
       telegram: z.string().optional(),
+      affiliate: z.boolean().optional(),
     }),
 });
 
