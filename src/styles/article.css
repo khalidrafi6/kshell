@@ -159,6 +159,8 @@ ol li a.active {
 .screenshot {
   display: block;
   margin: 35px auto;
+  width: 303px;
+  height: 640px;
 }
 
 @media screen and (max-width: 640px) {
