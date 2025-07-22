@@ -99,6 +99,7 @@ const tags = post.data.tags.map((tag) => tag.id);
         }
       </ul>
     </Card>
+      {post.data.toc ?
     <Card class="toc-card">
       <h2 class="no-mt">{t("article.toc")}</h2>
       <ol>
@@ -114,6 +115,7 @@ const tags = post.data.tags.map((tag) => tag.id);
         }
       </ol>
     </Card>
+    : null}
   </div>
   <article slot="right" data-pagefind-body>
     <Card>
