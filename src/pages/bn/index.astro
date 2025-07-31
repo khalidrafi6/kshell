@@ -7,7 +7,7 @@ import Card from "../../components/Card.astro";
 import Layout from "../../layouts/Layout.astro";
 import ImageGlow from "../../components/ImageGlow.astro";
 import Icon from "../../components/Icon.astro";
-import HikmahIcon from "../../components/IconHikmah.astro";
+// import HikmahIcon from "../../components/IconHikmah.astro";
 import { getCollection } from "astro:content";
 import { getEntry } from "astro:content";
 import { render } from "astro:content";
@@ -84,12 +84,14 @@ const { Content: Index } = await render(index!);
             </li>
           ))
         }
+        <!--
         <li>
           <a class="socials-link" href="https://hikmah.net/@khalidershell/">
             <HikmahIcon />
             <span>হিকমাহ</span>
           </a>
         </li>
+        -->
       </ul>
     </Card>
   </div>
