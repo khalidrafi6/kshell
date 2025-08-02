@@ -8,7 +8,8 @@ const t = useTranslations(lang);
 
 <footer>
   <Card class="footer-card">
-    {t("footer.copyright")}
+    {t("footer.copyright")}<br><br>
+    <i>{t("footer.attribution")}</i>
   </Card>
   <!-- Simple Analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
@@ -16,17 +17,21 @@ const t = useTranslations(lang);
 
 <style scoped>
   footer {
-    width: 50%;
+    width: fit-content;
     height: 25%;
     text-align: center;
     margin: 0 auto 2rem;
   }
   .footer-card {
     border-radius: 18px;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
   @media screen and (max-width: 640px) {
     footer {
       margin-bottom: 3rem;
+      margin-right: 1rem;
+      margin-left: 1rem;
     }
   }
 </style>
