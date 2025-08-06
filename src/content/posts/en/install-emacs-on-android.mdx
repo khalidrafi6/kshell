@@ -1,0 +1,64 @@
++++
+title = "How to Install Emacs on Android"
+createdAt = 2025-08-10
+image = "../../assets/install-emacs-on-android.png"
+tags = ["Emacs", "Code Editors", "Tutorial", "Android"]
+description = "Learn how to install Emacs on Android-a powerful cross-platform code editor. This tutorial also covers integrating Termux with Emacs."
+telegram = ""
++++
+
+Emacs is a nice editor for coding on Android. It contains support for touch input, document provider programs etc. It is also cross-platform and officially developed by the publisher. So, you get the advantage of using the same code editor on all your devices without extra hacks. You can also use packages like git, python etc. via Termux. There are three methods to install Emacs on Android. But, I will only cover two of them in this tutorial. Read the [introductory document](https://ftp.gnu.org/gnu/emacs/android/README) of Emacs in full to decide which method you want to follow and to learn some important instructions regarding Android.
+
+## How to Install
+
+### General Installation
+
+This is the easiest and most straightforward method. You simply download the app from official source and install it. But, you wouldn't get additional packages such as git, ssh, python etc. For simple code editing tasks, you can go for this method:
+
+1. Visit [your nearest GNU mirror](http://ftpmirror.gnu.org/gnu/emacs/android) or the [main GNU FTP server](http://ftp.gnu.org/gnu/emacs/android).
+
+2. Download a package according to the CPU architecture and Android version of your phone.
+
+3. Now, install the `.apk` file. Grant permission to install unknown apps if asked.
+
+<br />
+**N. B.:** _There is also another version available on [F-Droid](https://f-droid.org/). But, it's older from the official one. It lacks bug fixes and new features. Quoting from the [README](https://ftp.gnu.org/gnu/emacs/android/README):_
+
+> F-Droid's version is an old snapshot of the Android port from Februrary; although it has witnessed substantial improvement by comparison with the version from February they previously distributed, it remains incomplete and will always be absent bug fixes and new features present in the packages housed here.
+>
+> Their versions are also missing many of the dependencies packaged within the builds provided here: GnuTLS, image libraries, tree-sitter, and so on.
+
+
+### Installing Emacs with Termux support (Recommended)
+
+You can also install Emacs with Termux support. This gives Emacs access to Termux packages such as git, clang, python, fish etc. I recommend this method because it enhances your coding experience by interfacing with Termux. The instructions are provided in the [README](https://ftp.gnu.org/gnu/emacs/android/README). For this to work, you need a Termux package signed with the same key as Emacs. Read on for the instructions:
+
+1. Remove any existing copy of Termux and Emacs from your phone.
+
+2. Install Termux from [this source](https://sourceforge.net/projects/android-ports-for-gnu-emacs/files/termux/termux-app_apt-android-7-release_universal.apk/download) _first_. Then install Emacs [just like above](#installing-Emacs-without-Termux-support).
+
+3. Now, run the following command in Termux:
+
+```shell
+$ pkg update && pkg upgrade
+```
+Confirm each of the inquiries accordingly. 
+
+4. After all the packages are installed and updated, open Emacs and add the following code into `.emacs.d/early-init.el` (read more in [Early Init File](https://www.gnu.org/software/emacs/manual/html_node/emacs/Early-Init-File.html) from Emacs manual):
+
+```elisp
+(setenv "PATH" (format "%s:%s" "/data/data/com.termux/files/usr/bin"
+                        (getenv "PATH")))
+(push "/data/data/com.termux/files/usr/bin" exec-path)
+```
+
+Then, restart Emacs. Now, you will get access to programs in Termux from Emacs.
+
+### Installing Emacs from Termux
+
+You can also install Emacs directly from Termux. But, in my opinion, the Emacs app from GNU FTP server is better than the package in Termux repo. Because the Android app is officially provided by the developers of Emacs. It runs as a native Android GUI program. I don't use Emacs from Termux and won't cover this method here. You are advised to search online to install Emacs in this way.
+
+<br />
+That was all. If you face any issues following this tutorial, feel free to ask in the comments. And, if you liked the tutorial, please share with your friends.
+
+I also provide [IT services](services) ranging from IT support to web development. If you need help with issues regarding use of technology, if you wanna learn it or if you want to have your own website developed by me, do contact me [here](mailto:khalids_shell.l3rmw@slmail.me).
