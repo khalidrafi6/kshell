@@ -1,0 +1,55 @@
++++
+title = "How to Easily Set Up Emacs on Android with Spacemacs"
+createdAt = 2025-08-08
+image = "../../assets/install-spacemacs-on-android.png"
+tags = ["Emacs", "Spacemacs", "Code Editors", "Tutorial", "Android"]
+description = ""
++++
+
+Emacs is an all-rounder code editor which can do more than just editing-from browsing web to viewing documents. And, you can use this same editor on Android which makes it a very good option. However, configuring Emacs and getting started with it can be a time-consuming process since you need to learn it. But, thankfully we can use config files written by other Emacs users which help newbies getting started with the editor. One such Emacs configuration is [Spacemacs](https://www.spacemacs.org). Though aimed for desktop users, you can also use it on Android with a few tweaks which really helps setting up Emacs on Android. In this tutorial, I'll show you just that. So, let's dive in.
+
+## Before Getting Started
+
+1. Install Emacs on your Android with Termux support. I have written an easy tutorial on this which you can read [here](/install-emacs-on-android).
+
+2. A physical keyboard helps a lot in this task. But, it's optional. If you can't manage one, install [Hacker's Keyboard](https://f-droid.org/packages/org.pocketworkstation.pckeyboard/) or [Unexpected Keyboard](https://f-droid.org/packages/juloo.keyboard2/) which will let you use a computer-style keyboard on your Android.
+
+3. Install `git` from Termux if you don't have it. To check if you have `git`:
+
+```shell
+$ which git
+```
+
+If it's not there, run:
+
+```shell
+$ pkg install git
+```
+
+4. Download `Source Code Pro` font. This is the default font in Spacemacs. 
+
+## Installing Spacemacs
+
+1. Delete or backup any existing Emacs configuration in `$HOME/.emacs.d/`, `$HOME/emacs.el` or `$HOME/emacs`. Here `$HOME` means the Emacs home directory which is usually `/data/data/org.gnu.emacs/files`.
+
+2. Now, run the following git command:
+
+```shell
+git clone https://github.com/syl20bnr/spacemacs $HOME/.emacs.d
+```
+
+If your internet is slow, run this:
+
+```shell
+git clone --depth 1 https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+3. Launch Emacs and Spacemacs should be loaded. 
+
+4. Now, it will ask you a few questions to create `$HOME/.spacemacs` file which contains Spacemacs configuration. Firstly, it will ask you to choose keybindings:
+
+- Vim: It is the keybindings of Vim editor. If you are coming from Vim/Neovim, this is the best choice for you. If you are new to this, know that Vim keybindings take some time to learn. But, once you have mastered it, it is very powerful. I myself use it, too. I am a former Neovim user.
+
+- Emacs: If you are not comfortable with Vim editing style, you can choose this. 
+
+Now, Emacs will start downloading packages.
+```
