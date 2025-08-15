@@ -1,15 +1,15 @@
 +++
-title = "How to Install Emacs on Android"
+title = "How to Install and Set Up Emacs on Android"
 createdAt = 2025-08-06
 image = "../../assets/install-emacs-on-android.png"
 tags = ["Emacs", "Code Editors", "Tutorial", "Android"]
-description = "Learn how to install Emacs on Android-a powerful cross-platform code editor. This tutorial also covers integrating Termux with Emacs."
+description = "Learn how to install and set up Emacs on Android-a powerful cross-platform code editor."
 telegram = ""
 +++
 
-Emacs is a nice editor for coding on Android. It contains support for touch input, document provider programs etc. It is also cross-platform and officially developed by the publisher. So, you get the advantage of using the same code editor on all your devices without extra hacks. You can also use packages like git, python etc. via Termux. There are three methods to install Emacs on Android. But, I will only cover two of them in this tutorial. Read the [introductory document](https://ftp.gnu.org/gnu/emacs/android/README) of Emacs in full to decide which method you want to follow and to learn some important instructions regarding Android.
+[Emacs](https://www.gnu.org/software/emacs/) is a nice editor for coding on Android. It is cross-platform and officially supported. So, you get the advantage of using the same code editor on all your devices without extra hacks (unlike VSCode). If you want to [code without a computer](coding-without-computer), this is the best choice. I know of no other code editor for Android which is also supported on desktops and as powerful as Emacs is. You can use packages like git, python etc. in it via [Termux](https://termux.dev/). And, Emacs actually lets you do much more than just editing code. You can browse web, use terminal, calculate maths, make plans and many more. Chances are you will end up uninstalling many other apps on your phone after starting to use Emacs! It is extensible and customizable. So, you can make it do many stuffs a tradtional editor can't. But, you have to know Emacs Lisp for that. Alright, let's dive in to installing Emacs on Android. There are three methods to install it on Android. But, I will only cover two of them in this tutorial. I recommend [installing Emacs with Termux support](#installing-emacs-with-termux-support-recommended).
 
-## How to Install
+## Installation
 
 ### General Installation
 
@@ -21,21 +21,22 @@ This is the easiest and most straightforward method. You simply download the app
 
 3. Now, install the `.apk` file. Grant permission to install unknown apps if asked.
 
-<br />
-**N. B.:** _There is also another version available on [F-Droid](https://f-droid.org/). But, it's older from the official one. It lacks bug fixes and new features. Quoting from the [README](https://ftp.gnu.org/gnu/emacs/android/README):_
+**N. B.:** There is also another version available on [F-Droid](https://f-droid.org/). But, it's older from the official one. It lacks bug fixes and new features. Quoting from the [README](https://ftp.gnu.org/gnu/emacs/android/README):
 
-> F-Droid's version is an old snapshot of the Android port from Februrary; although it has witnessed substantial improvement by comparison with the version from February they previously distributed, it remains incomplete and will always be absent bug fixes and new features present in the packages housed here.
+> _F-Droid's version is an old snapshot of the Android port from Februrary; although it has witnessed substantial improvement by comparison with the version from February they previously distributed, it remains incomplete and will always be absent bug fixes and new features present in the packages housed here._
 >
-> Their versions are also missing many of the dependencies packaged within the builds provided here: GnuTLS, image libraries, tree-sitter, and so on.
+> _Their versions are also missing many of the dependencies packaged within the builds provided here: GnuTLS, image libraries, tree-sitter, and so on._
 
 
-### Installing Emacs with Termux support (Recommended)
+### Installation with Termux support (Recommended)
 
-You can also install Emacs with Termux support. This gives Emacs access to Termux packages such as git, clang, python, fish etc. I recommend this method because it enhances your coding experience by interfacing with Termux. The instructions are provided in the [README](https://ftp.gnu.org/gnu/emacs/android/README). For this to work, you need a Termux package signed with the same key as Emacs. Read on for the instructions:
+You can also install Emacs with Termux support. This gives Emacs access to Termux packages such as git, clang, python, fish etc. I recommend this method because it enhances your coding experience by interfacing with Termux. The instructions are provided in the [Emacs README](https://ftp.gnu.org/gnu/emacs/android/README). For this to work, you need a Termux package signed with the same key as Emacs. The devs already provide such packages. This is how you install Emacs with Termux support:
 
 1. Remove any existing copy of Termux and Emacs from your phone.
 
-2. Install Termux from [this source](https://sourceforge.net/projects/android-ports-for-gnu-emacs/files/termux/termux-app_apt-android-7-release_universal.apk/download) _first_. Then install Emacs [just like above](#installing-Emacs-without-Termux-support).
+2. Install Termux from [this source](https://sourceforge.net/projects/android-ports-for-gnu-emacs/files/termux/termux-app_apt-android-7-release_universal.apk/download) _first_.
+
+3. Then install Emacs from your [nearest mirror](http://ftpmirror.gnu.org/gnu/emacs/android) or the [FTP server](http://ftp.gnu.org/gnu/emacs/android). You must install the package from `termux/` dir.
 
 3. Now, run the following command in Termux:
 
@@ -44,7 +45,7 @@ $ pkg update && pkg upgrade
 ```
 Confirm each of the inquiries accordingly. 
 
-4. After all the packages are installed and updated, open Emacs and add the following code into `.emacs.d/early-init.el` (read more in [Early Init File](https://www.gnu.org/software/emacs/manual/html_node/emacs/Early-Init-File.html) from Emacs manual):
+4. After all the packages are installed and updated, open Emacs and add the following code into `.emacs.d/early-init.el` (read more about Early Init File in [Emacs manual](https://www.gnu.org/software/emacs/manual/html_node/emacs/Early-Init-File.html)):
 
 ```elisp
 (setenv "PATH" (format "%s:%s" "/data/data/com.termux/files/usr/bin"
@@ -54,11 +55,74 @@ Confirm each of the inquiries accordingly.
 
 Then, restart Emacs. Now, you will get access to programs in Termux from Emacs.
 
-### Installing Emacs from Termux
+### Installing from Termux Repository
 
-You can also install Emacs directly from Termux. But, in my opinion, the Emacs app from GNU FTP server is better than the package in Termux repo. Because the Android app is officially provided by the developers of Emacs. It runs as a native Android GUI program. I don't use Emacs from Termux and won't cover this method here. You are advised to search online to install Emacs in this way.
+You can also install Emacs directly from Termux repository. Then you can launch Emacs from inside Termux. But, in my opinion, the Emacs app by GNU is better than the package in Termux repo as it is directly by the developers of Emacs. It runs as a native Android GUI program. I don't use Emacs from Termux and won't cover this method here. You are advised to search online to install Emacs in this way.
+
+
+## Getting Started
+
+### Customizing Emacs on Android
+
+The best way to [customize](https://www.gnu.org/software/emacs/manual/html_node/emacs/Customization.html) Emacs on Android is via the [Easy Customization Interface](https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html). It can be accessed through the menu bar: **Options > Customize Emacs**. There are many options in that menu. You can start with **Top-level Customization Group** which is basically the *home* of **Easy Customization Interface**. There is also a search bar at the top of the interface for searching settings. You can also use the **All Settings Matching** option to directly search settings. Emacs can also be customized with an [initialization file](https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html) where you configure it with Lisp expressions. Emacs searches for the init file using filenames `~/.emacs.el`, `~/.emacs`, or `~/.emacs.d/init.el` in that order. Lisp expressions are function names followed by arguments and surrounded by parentheses. For example, to auto-save a file 5 seconds after you stop typing, you would write this in your init file:
+
+```elisp
+(setq auto-save-timeout 5)
+```
+
+To display modifier bar, you would turn on the global minor mode named `modifier-bar-mode` by changing it's value to `1`:
+```elisp
+(modifier-bar-mode 1)
+```
+
+For more details, [refer to Emacs manual](https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-Syntax.html)
+
+### Grant Storage Permissions to Emacs
+
+Emacs by default has access to its app data directory (usually `/data/data/org.gnu.emacs/files`) which is used as home directory. But, it also needs to access your internal storage (located at `/sdcard`) to open and edit files there. For Android 11+, you can grant this permission by going to **Special App Access** option from **Settings**. This option is usually under **Apps** section in **Settings**. Turn on **All files access** for Emacs there. You can also give access to storage provided by other apps (cloud storage apps for example). To do this, execute `android-request-directory-access` command by going to **File > Execute command** from Emacs menu bar. Now, go to the corresponding storage and choose the directory from the selection panel.
+
+### Always display on-screen keyboard
+
+Emacs on Android hides on-screen keyboard in read-only buffers by default to save screen space. You can usually perform actions from the menu bar or tool bar what you would otherwise do with a keyboard. But, having the keyboard is still very useful. To always display the on-screen keyboard go to **Options > Customize Emacs** and then search for the option `touch-screen-display-keyboard`. Then, expand it and toggle it on.
+
+### Enable support for keybindings of some packages
+
+Some Emacs packages (e.g. evil) that rely on reading raw key events / keybindings globally don't work with Android's on-screen keyboard. This is because Android input methods rely on Emacs' text conversion style which lets it implement some features. If you use any package that can't work for this, disable text conversion globally with the variable `overriding-text-conversion-style` or disable it locally per buffer with `text-conversion-style`.
+
+### Set up GUI elements or bars
+
+If you want to use Emacs on Android without physical keyboard, GUI elements like menu bar and tool bar will be your best friends. So, enable all of them from `Customize`. One very useful option for Android is the modifier bar beneath the tool bar of Emacs. It contains buttons for the modifier keys (e.g. CTRL, ALT, META etc.) understood by Emacs. You can enable it with `modifier-bar-mode` when `tool-bar-mode` is on. When you tap any of the modifier keys, Emacs will also display the on-screen keyboard and temporarily disable text conversion to let you use them in a Text or Prog mode buffer. You can set `tool-bar-position` to `bottom` to get those keys near your fingers.
+
+### Opening files with Emacs
+
+When you try to open a file on Android, it asks which app to use. To open files with Emacs, you need to enable the Emacs server. Run `M-x server start` to start the server from inside Emacs. Running the server automatically at startup would be very convenient for you. To do that, simply add `(server-start)` to your [initialization file](www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html).
+
+### Configuring fonts
+
+You can set default font in Emacs with the `set-frame-font` function like so:
+
+```elisp
+(set-frame-font "JetBrains Mono")
+```
+
+You can also set fonts from the **Faces** group in `Customize`. There are various subgroups under that group for font faces used in different areas of Emacs. Start with the `Basic Faces` subgroup and customize others as necessary.
+
+### Read Emacs Manuals
+
+Emacs is a feature-packed editor and you will need help from time to time. The best way to get help when you're stuck is to _help yourself_ with manuals. Emacs comes with several manuals included in it:
+
+- [The Emacs Manual](https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html)
+
+- [An Introduction to Programming in Emacs Lisp](https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html)
+
+- [Emacs Lisp Reference Manual](https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html)
+
+- and [other manuals](https://www.gnu.org/software/emacs/manual/index.html)
+
+You can read them from inside Emacs with `C-h i` or [online](https://www.gnu.org/software/emacs/manual/index.html). `C-h r` opens the Emacs manual. Typing `i` inside a manual lets you look for topics which is quite handy.
 
 <br />
 That was all. If you face any issues following this tutorial, feel free to ask in the comments. And, if you liked the tutorial, please share with your friends.
 
-I also provide [IT services](services) ranging from IT support to web development. If you need help with issues regarding use of technology, if you wanna learn it or if you want to have your own website developed by me, do contact me [here](mailto:khalids_shell.l3rmw@slmail.me).
+Do you want to learn programming but don't have a computer? I can help you set up a coding environment on your Android phone with Emacs for a small fee. I also provide [IT services](services) ranging from IT support to web development. If you need help with issues regarding use of technology, if you wanna learn it or if you want to have your own website developed by me, do contact me [here](mailto:khalids_shell.l3rmw@slmail.me).
+
