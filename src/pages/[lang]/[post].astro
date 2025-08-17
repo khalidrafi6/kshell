@@ -293,7 +293,10 @@ s_msg();
       }
   </article>
 </Layout>
-<script src="../../scripts/toc.ts"></script>
+
+{lang == "bn" ? <script src="../../scripts/toc-bn.ts"></script>
+            :
+            <script src="../../scripts/toc-en.ts"></script>}
 <!-- <style scoped> -->
 <!--   .tgme_widget_message_bubble_logo { -->
 <!--     display: none; -->
