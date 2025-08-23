@@ -6,7 +6,8 @@ tags = ["Emacs", "Code Editors", "Tutorial", "Android"]
 description = "Learn how to install and set up Emacs on Android-a powerful cross-platform code editor."
 +++
 
-[Emacs](https://www.gnu.org/software/emacs/) is a nice editor for coding on Android. It is cross-platform and officially supported. So, you get the advantage of using the same code editor on all your devices without extra hacks (unlike VSCode). If you want to [code without a computer](/en/coding-without-computer), this is the best choice. I know of no other code editor for Android which is also supported on desktops and as powerful as Emacs is. You can use packages like git, python etc. in it via [Termux](https://termux.dev/). And, Emacs actually lets you do much more than just editing code. You can browse web, use terminal, calculate maths, make plans and many more. Chances are you will end up uninstalling many other apps on your phone after starting to use Emacs! It is extensible and customizable. So, you can make it do many stuffs a traditional editor can't.
+[Emacs](https://www.gnu.org/software/emacs/) is a nice editor for coding on Android. It is cross-platform and officially supported. So, you get the advantage of using the same code editor and familiar environment on all your devices without extra hacks (unlike VSCode). If you want to [code without a computer](/en/coding-without-computer), this is the best choice. I know of no other code editor for Android which is also supported on desktops and as powerful as Emacs is. You can use packages like git, python etc. in it via [Termux](https://termux.dev/). And, Emacs actually lets you do much more than just editing code. You can browse web, use terminal, calculate maths, make plans and many more. Chances are you will end up uninstalling many other apps on your phone after starting to use Emacs! The publisher of Emacs calls it an advanced,
+self-documenting, customizable and extensible editor. So, you can make it do many stuffs a traditional editor can't.
 
 Alright, let's dive in to installing Emacs on Android. There are three methods to install it on Android. But, I will only cover two of them in this tutorial. I recommend [installing Emacs with Termux support](#installing-emacs-with-termux-support-recommended).
 
@@ -64,7 +65,7 @@ You can also install Emacs directly from the Termux repository. Then you can lau
 
 ### Customizing Emacs on Android
 
-The best way to [customize](https://www.gnu.org/software/emacs/manual/html_node/emacs/Customization.html) Emacs on Android is via the [Easy Customization Interface](https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html). It can be accessed through the menu bar: **Options > Customize Emacs**. There are many options in that menu. You can start with **Top-level Customization Group** which is basically the *home* of **Easy Customization Interface**. There is also a search bar at the top of the interface for searching settings. You can also search using the **All Settings Matching** option. 
+The best way to [customize](https://www.gnu.org/software/emacs/manual/html_node/emacs/Customization.html) Emacs on Android is via the [Easy Customization Interface](https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html). It can be accessed through the menu bar: **Options > Customize Emacs**. There are many options in that menu. You can start with **Top-level Emacs Customization Group** which is basically the *home* of **Easy Customization Interface**. There you can navigate the interface according to various customization groups. There is also a search bar at the top of the interface for searching settings. You can also search using the **All Settings Matching** option. 
 
 Emacs can be customized with an [initialization file](https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html), too. It searches for the init file using filenames `~/.emacs.el`, `~/.emacs`, or `~/.emacs.d/init.el` in that order. You write Lisp expressions in that file to configure Emacs. Lisp expressions are function names followed by arguments and surrounded by parentheses. For example, to auto-save a file 5 seconds after you stop typing, you would change the value of `auto-save-timeout` variable with `setq`:
 
@@ -104,7 +105,7 @@ Some Emacs packages (e.g. evil) that rely on globally reading raw key events / k
 
 ### Set up GUI elements or bars
 
-If you want to use Emacs on Android without physical keyboard, GUI elements like menu bar and tool bar will be your best friends. So, enable both of them from `Customize`. One very useful option for Android is the modifier bar beneath the tool bar of Emacs. It contains buttons for the modifier keys (e.g. CTRL, ALT, META etc.) understood by Emacs. You can enable it with `modifier-bar-mode` when `tool-bar-mode` is on. When you tap any of the modifier keys, Emacs will also display the on-screen keyboard and temporarily disable text conversion to let you use them in a Text or Prog mode buffer. You can set `tool-bar-position` to `bottom` to get those keys near your fingers.
+If you want to use Emacs on Android without physical keyboard, GUI elements like menu bar and tool bar will be your best friends. So, enable both of them from `Customize`. One very useful option for Android is the modifier bar attached with the tool bar of Emacs. It contains buttons for the modifier keys (e.g. CTRL, ALT, META etc.) understood by Emacs. You can enable it with `modifier-bar-mode` when `tool-bar-mode` is on. When you tap any of the modifier keys, Emacs will also display the on-screen keyboard and temporarily disable text conversion to let you use them in a Text or Prog mode buffer. You can set `tool-bar-position` to `bottom` to get those keys near your fingers.
 
 ### Opening files with Emacs
 
@@ -113,15 +114,15 @@ When you try to open a file on Android, it asks which app to use. To open files 
 
 ### Settings to improve readability and editing
 
-Enable `visual-line-mode` to edit lines based on their visual order, not logical order. Long lines when wrapped look like many lines though actually they are a single line. This mode changes simple editing commands to act on visual lines and also enables word-wrap in the buffer. Thus helping you read and type better on Android. You can also enable `visual-wrap-prefix-mode` to indent wrapped lines. You may also look into the following:
-
-- Visual wrap prefix mode
+Enable `visual-line-mode` to edit lines based on their visual order, not logical order. Long lines when wrapped look like many lines though actually they are a single line. This mode changes simple editing commands to act on visual lines and also enables word-wrap in the buffer. Thus helping you read and type better on Android. You can also enable `visual-wrap-prefix-mode` to indent wrapped lines. You may also look into the following features:
 
 - [Visual fill](https://elpa.gnu.org/packages/visual-fill.html)
 
 - [Adaptive filling](https://www.gnu.org/software/emacs/manual/html_node/emacs/Adaptive-Fill.html)
 
 - [Adaptive wrap](https://elpa.gnu.org/packages/adaptive-wrap.html)
+
+- Adaptive wrap prefix mode
 
 ### Configuring fonts
 
@@ -132,8 +133,6 @@ You can set default font in Emacs with the `set-frame-font` function like so:
 ```
 
 You can also set fonts from the **Faces** group in `Customize`. There are various subgroups under that group for font faces used in different areas of Emacs. Start with the `Basic Faces` subgroup and customize others as necessary.
-
-
 
 ### Read Emacs Manuals
 
@@ -147,7 +146,7 @@ Emacs is a feature-packed editor and you will need help from time to time. The b
 
 - and [other manuals](https://www.gnu.org/software/emacs/manual/index.html)
 
-You can read them from inside Emacs with `C-h i` or [online](https://www.gnu.org/software/emacs/manual/index.html). `C-h r` opens the Emacs manual. Typing `i` inside a manual lets you look for topics which is very handy. You can also learn more about various functions, variables, modes etc. and their values with `describe-*` commands like `describe-function`, `describe-mode`, `describe-variable` etc. Simply type `M-x` or **File > Execute Command** to get started.
+You can read them from inside Emacs with `C-h i` or [online](https://www.gnu.org/software/emacs/manual/index.html). `C-h r` opens the Emacs manual. Typing `i` inside a manual lets you look for topics which is very handy. You can also learn more about various functions, variables, modes etc. and their values with `describe-*` commands like `describe-function`, `describe-mode`, `describe-variable` etc. Simply type `M-x` or go to **File > Execute Command** to get started.
 
 <br />
 That's it! Now, you have a basic Emacs setup on Android. If you run into issues, drop a comment below. Found this guide helpful? Share it with fellow coders!
