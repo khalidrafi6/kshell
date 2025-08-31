@@ -1,2 +1,8 @@
-My technical blog named Khalid's Shell.
-Visit Now: blog.khalidrafi.me/bn (বাংলা), blog.khalidrafi.me/en (English).
+My technical blog, **Khalid's Shell**.
+
+<br />
+Visit Now:
+
+- বাংলা: blog.khalidrafi.me/bn
+
+- English: blog.khalidrafi.me/en
