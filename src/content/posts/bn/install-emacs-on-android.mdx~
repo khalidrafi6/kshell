@@ -3,7 +3,7 @@ title = "অ্যান্ড্রয়েডে যেভাবে Emacs ইন
 createdAt = 2025-08-30
 image = "../../assets/install-emacs-on-android.png"
 tags = ["Emacs", "কোড এডিটর", "টিউটোরিয়াল", "অ্যান্ড্রয়েড"]
-description = ""
+description = "Learn how to install and set up Emacs on Android-a powerful cross-platform code editor."
 +++
 
 অ্যান্ড্রয়েডে কোডিং করার জন্য [Emacs](https://www.gnu.org/software/emacs/) একটি চমৎকার এডিটর। এটি ক্রস-প্ল্যাটফর্ম, তাই আপনি সব ডিভাইসে একই কোড এডিটর ও পরিচিত পরিবেশে কোডিং করার সুবিধা পাবেন। আপনার যদি [কম্পিউটার ছাড়াই কোডিং](/bn/coding-without-computer) করার প্রয়োজন পড়ে, তাহলে এটিই সেরা এডিটর। যদিও এটির অ্যান্ড্রয়েড ভার্সন তুলনামূলক নতুন। গত ফেব্রুয়ারি মাসে এটি প্রকাশিত হয়। তবে আমি অ্যান্ড্রয়েডে আর কোনো কোড এডিটর চিনি না যা ডেস্কটপেও চালানো যায় এবং Emacs এর মতো শক্তিশালী। আপনি [Termux](https://termux.dev/) এর মাধ্যমে Emacs এ `git`, `python` ইত্যাদি প্যাকেজ ব্যবহার করতে পারবেন। Emacs এর প্রকাশক এডিটরটির পরিচয় দিয়েছেন এভাবে:
