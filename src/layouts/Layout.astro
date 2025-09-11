@@ -65,6 +65,10 @@ const { title, description, image, pagefindIgnore, article } = Astro.props;
 			<meta property="article:modified_time" content={article.updatedAt.toISOString()} />
 		)}
 
+{lang == "bn" ?
+      <meta name="telegram:channel" content="@khalidershell" />
+      : null}
+
     <meta name="twitter:card" content="summary_large_image" />
 
 		{twitterHandle && (

@@ -45,9 +45,7 @@
 
 @font-face {
   font-family: "JetBrains Mono";
-  src:
-    local("JetBrains Mono Bold"),
-    url("/fonts/JetBrainsMono-Bold.woff2") format("woff2");
+  src: url("/fonts/JetBrainsMono-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
