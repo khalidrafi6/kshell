@@ -25,5 +25,14 @@
     },
     "text": "ফেসবুক",
     "link": "https://www.facebook.com/profile.php?id=61575714120165"
-  }
+  },
+    {
+        "id": 4,
+        "icon": {
+            "type": "simple-icons",
+            "name": "git"
+        },
+        "text": "গিট",
+        "link": "https://git.khalidrafi.me"
+    }
 ]

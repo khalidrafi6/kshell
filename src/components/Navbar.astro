@@ -291,10 +291,6 @@ const path = Astro.url.pathname;
       transition: all 0.25s ease;
     }
 
-    .site-title {
-        font-size: 1rem;
-    }
-
     .mobile-nav-toggle {
       display: flex;
     }
@@ -367,6 +363,15 @@ const path = Astro.url.pathname;
       top: 100%;
       font-size: 0.875em;
     }
+
+      @media screen and (max-width: 500px) {
+
+          .site-title {
+              font-size: 1rem;
+          }
+
+      }
+
   }
 </style>
 <style is:global>

@@ -2,10 +2,10 @@
   {
     "id": 1,
     "icon": {
-      "type": "lucide",
-      "name": "github"
+      "type": "simple-icons",
+      "name": "git"
     },
-    "text": "GitHub",
-    "link": "https://github.com/khalidrafi6"
+    "text": "Git",
+      "link": "https://git.khalidrafi.me"
   }
 ]
