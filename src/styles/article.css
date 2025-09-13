@@ -250,3 +250,11 @@ table tbody tr {
 table tbody tr td {
   padding: 0.5rem 1.5rem 0.5rem 0;
 }
+
+/* For Emacs Bangla article */
+
+@media screen and (max-width: 360px) {
+    .emacs-bn {
+        font-size: 14px;
+    }
+}
