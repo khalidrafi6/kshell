@@ -62,6 +62,26 @@ You can also install Emacs directly from the Termux repository. Then you can lau
 
 ## Getting Started
 
+> 💡 *You may check out [my Emacs configuration](https://git.khalidrafi.me/configs/.emacs.d) if you wish. If you don't have enough time, you can start using my [barebones.el](https://git.khalidrafi.me/configs/.emacs.d/src/branch/main/barebones.el) file as your [Init File](https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html). This file has almost all the configurations below enabled, with some exceptions. I've added comments to all my files for easier understanding. So, you'll find proper information even for the exceptions. There are also useful configurations in other files of my cpnfiguration  alongside `barebones.el`. So, I recommend looking at all the files.*
+
+### Keyboard Notation in Emacs
+
+<div align="center">
+
+| Notation | Key Meaning    |
+|:--------:|:--------------:|
+| `ESC`    | ESCAPE         |
+| `M`      | META (ALT)     |
+| `C`      | CTRL (CONTROL) |
+| `S`      | SHIFT          |
+| `SPC`    | SPACE          |
+| `RET`    | RETURN (ENTER) |
+| `DEL`    | DELETE         |
+
+</div>
+
+Example: `C-s` = `CTRL-s`, `M-x` = `META-x`, `S-d` = `SHIFT-d`, `C-M-DEL` = `CTRL-META-DELETE`
+
 ### Customizing Emacs on Android
 
 The best way to [customize](https://www.gnu.org/software/emacs/manual/html_node/emacs/Customization.html) Emacs on Android is via the [Easy Customization Interface](https://www.gnu.org/software/emacs/manual/html_node/emacs/Easy-Customization.html). It can be accessed through the menu bar: **Options > Customize Emacs**. There are many options in that menu. You can start with **Top-level Customization Group** which is basically the *home* of **Easy Customization Interface**. There is also a search bar at the top of the interface for searching settings. You can also search using the **All Settings Matching** option. 
@@ -78,7 +98,7 @@ To display modifier bar, you would call the minor mode command `modifier-bar-mod
 (modifier-bar-mode 1)
 ```
 
-For more details, [refer to Emacs manual](https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-Syntax.html)
+For more details about Init File syntax, [refer to Emacs manual](https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-Syntax.html). Furthermore, you can run any command by pressing `M-x` from within Emacs itself. For example, if you type `M-x customize` and press Enter, the **Top-level Emacs Customization Group** will appear, because `customize` is the command for **Easy Customization Interface**. Additionally, you can find commands using tab completion.
 
 ### Grant Storage Permissions to Emacs
 
@@ -94,6 +114,10 @@ For Android versions lower than 11, you can allow storage permission from **Perm
 
 You can also give Emacs access to storage provided by other apps (cloud storage apps for example). To do this, execute `android-request-directory-access` command by going to **File > Execute command** from Emacs menu bar. Now, choose the corresponding storage and then your desired directory from the selection panel.
 
+### Set up GUI elements or bars
+
+If you want to use Emacs on Android without a physical keyboard, GUI elements like menu bar and tool bar will be your best friends. So, enable all of them as you need from `Customize`. One very useful option for Android is the modifier bar beneath the tool bar of Emacs. It contains buttons for the modifier keys (e.g. CTRL, ALT, META etc.) understood by Emacs. You can enable it with `modifier-bar-mode` when `tool-bar-mode` is on. When you tap any of the modifier keys, Emacs will also display the on-screen keyboard and temporarily disable text conversion to let you use them in a Text or Prog mode buffer. You can set `tool-bar-position` to `bottom` to get those keys near your fingers.
+
 ### Always display on-screen keyboard
 
 Emacs on Android hides on-screen keyboard in read-only buffers by default to save screen space. You can usually perform actions from the menu bar or tool bar what you would otherwise do with a keyboard. But, having the keyboard is still very useful. Turn on `touch-screen-display-keyboard` in `Customize`. 
@@ -102,20 +126,14 @@ Emacs on Android hides on-screen keyboard in read-only buffers by default to sav
 
 Some Emacs packages (e.g. evil) that rely on globally reading raw key events / keybindings don't work with Android's on-screen keyboard. This is because Android input methods rely on Emacs' text conversion style which lets it implement some features like auto-fill, electric-pair etc. If you use any package that can't work because of this, disable text conversion globally with the variable `overriding-text-conversion-style` or disable it locally per buffer with `text-conversion-style`.
 
-### Set up GUI elements or bars
-
-If you want to use Emacs on Android without physical keyboard, GUI elements like menu bar and tool bar will be your best friends. So, enable both of them from `Customize`. One very useful option for Android is the modifier bar beneath the tool bar of Emacs. It contains buttons for the modifier keys (e.g. CTRL, ALT, META etc.) understood by Emacs. You can enable it with `modifier-bar-mode` when `tool-bar-mode` is on. When you tap any of the modifier keys, Emacs will also display the on-screen keyboard and temporarily disable text conversion to let you use them in a Text or Prog mode buffer. You can set `tool-bar-position` to `bottom` to get those keys near your fingers.
-
 ### Opening files with Emacs
 
 When you try to open a file on Android, it asks which app to use. To open files with Emacs, you need to enable the Emacs server. Run `M-x server start` to start the server from inside Emacs. Running the server automatically at startup would be very convenient for you. To do that, simply add `(server-start)` to your [initialization file](https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html).
 
 
-### Settings to improve readability and editing
+### Improve readability and editing experience
 
 Enable `visual-line-mode` to edit lines based on their visual order, not logical order. Long lines when wrapped look like many lines though actually they are a single line. This mode changes simple editing commands to act on visual lines and also enables word-wrap in the buffer. Thus helping you read and type better on Android. You can also enable `visual-wrap-prefix-mode` to indent wrapped lines. You may also look into the following:
-
-- Visual wrap prefix mode
 
 - [Visual fill](https://elpa.gnu.org/packages/visual-fill.html)
 
@@ -133,7 +151,35 @@ You can set default font in Emacs with the `set-frame-font` function like so:
 
 You can also set fonts from the **Faces** group in `Customize`. There are various subgroups under that group for font faces used in different areas of Emacs. Start with the `Basic Faces` subgroup and customize others as necessary.
 
+If your primary font does not support your local language or script, you need to add a language-specific font to the fontset. For this, you can use the following code in your Init File:
 
+```elisp
+(set-fontset-font "fontset-default" nil "Noto Sans Bengali" nil 'append)
+```
+
+According to this Elisp expression, Emacs will use the specified font Noto Sans Bengali for rendering Bengali language. This font is usually pre-installed on Android phones. However, if the font you want to use is not on your device, you can create a folder named `fonts` in Emacs' home directory and copy the font file there. But remember, only `.ttf` is currently supported.
+
+### Beyond Code Editing
+
+As mentioned before, you can do much more in Emacs than just coding. Emacs comes with built-in packages for various tasks, and you can also install more. Here are some examples of what you can do with Emacs:
+
+#### Task & Project Management with Org Mode
+Org Mode is a powerful writing tool and organizer . It uses a simple markup language and is excellent for taking notes, managing todos, and planning projects. Press `TAB` on a heading to fold/unfold its content. Read the [Org Mode manual](https://www.gnu.org/software/emacs/manual/org.html) to learn more.
+
+#### Web Browsing with EWW
+Use `M-x eww` to open Emacs's built-in browser. It's a simple, distraction-free browser perfect for quickly looking up documentation without leaving your editor.
+
+#### Email with Gnus or mu4e
+Read email and newsgroups directly in Emacs using Gnus (`M-x gnus`) or the [mu4e](https://www.djcbsoftware.nl/code/mu/mu4e.html) package.
+
+#### Calendar & Diary
+Manage your schedule with `M-x calendar`. You can record events and appointments in the integrated diary.
+
+#### Reading Documents
+Emacs can view PDFs, EPUBs, and Office documents using its document viewer (`C-x C-f` on a document file).
+
+#### File Management with Dired
+Use Dired (`C-x d`) for powerful file management without leaving Emacs.
 
 ### Read Emacs Manuals
 
