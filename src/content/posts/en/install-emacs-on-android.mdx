@@ -6,7 +6,21 @@ tags = ["Emacs", "Code Editors", "Tutorial", "Android"]
 description = "Learn how to install and set up Emacs on Android-a powerful cross-platform code editor."
 +++
 
-[Emacs](https://www.gnu.org/software/emacs/) is a nice editor for coding on Android. It is cross-platform and officially supported. So, you get the advantage of using the same code editor on all your devices without extra hacks (unlike VSCode). If you want to [code without a computer](/en/coding-without-computer), this is the best choice. I know of no other code editor for Android which is also supported on desktops and as powerful as Emacs is. You can use packages like git, python etc. in it via [Termux](https://termux.dev/). And, Emacs actually lets you do much more than just editing code. You can browse web, use terminal, calculate maths, make plans and many more. Chances are you will end up uninstalling many other apps on your phone after starting to use Emacs! It is extensible and customizable. So, you can make it do many stuffs a traditional editor can't.
+[Emacs](https://www.gnu.org/software/emacs/) is a nice editor for coding on Android. It is cross-platform and officially supported. So, you get the advantage of using the same code editor on all your devices without extra hacks (unlike VSCode). If you want to [code without a computer](/en/coding-without-computer), this is the best choice. I know of no other code editor for Android which is also supported on desktops and as powerful as Emacs is. You can use packages like git, python etc. in it via [Termux](https://termux.dev/). The publisher of Emacs describes it as:
+
+> Emacs is the advanced, extensible, customizable, self-documenting editor
+
+So, its main features are:
+
+- **Advanced:** Emacs can do more than just basic text editing - it can handle indentation, edit multiple files, edit remote files, and much more.
+
+- **Self-documenting:** You can use help commands to find out what any option does, or to find all commands related to a given topic from within the editor itself.
+
+- **Customizable:** You can easily change its commands and settings.
+
+- **Extensible:** Besides changing commands, you can also create new commands and functionality.
+
+Actually, in Emacs, you can do much more than just code editing. You can browse the web, read email or news, perform calculations, make plans, and much more. You might end up uninstalling many other apps on your phone after starting to use Emacs! By programming with [Emacs Lisp](https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html) or installing [packages](https://elpa.gnu.org/), you can make it do many things that a traditional editor cannot.
 
 Alright, let's dive in to installing Emacs on Android. There are three methods to install it on Android. But, I will only cover two of them in this tutorial. I recommend [installing Emacs with Termux support](#installing-emacs-with-termux-support-recommended).
 
@@ -126,6 +140,20 @@ Emacs on Android hides on-screen keyboard in read-only buffers by default to sav
 
 Some Emacs packages (e.g. evil) that rely on globally reading raw key events / keybindings don't work with Android's on-screen keyboard. This is because Android input methods rely on Emacs' text conversion style which lets it implement some features like auto-fill, electric-pair etc. If you use any package that can't work because of this, disable text conversion globally with the variable `overriding-text-conversion-style` or disable it locally per buffer with `text-conversion-style`.
 
+### Terminal and Shell
+
+You can use terminal and shell from within Emacs. For this, it has the following commands:
+
+- **Terminal:**
+  - `term`
+  - `ansi-term`
+
+- **Shell:**
+  - `shell`
+  - `eshell`
+
+Terminals can take input directly from the keyboard, which allows for features like using up arrow to see previous commands. On the other hand, shell only takes input from the buffer, so it doesn't have some of the terminals' features. If you need special character support (like colored output), you must use `ansi-term`. Lastly, `eshell` is a command interpreter similar to shell but written with Emacs Lisp.
+
 ### Opening files with Emacs
 
 When you try to open a file on Android, it asks which app to use. To open files with Emacs, you need to enable the Emacs server. Run `M-x server start` to start the server from inside Emacs. Running the server automatically at startup would be very convenient for you. To do that, simply add `(server-start)` to your [initialization file](https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html).
@@ -151,35 +179,43 @@ You can set default font in Emacs with the `set-frame-font` function like so:
 
 You can also set fonts from the **Faces** group in `Customize`. There are various subgroups under that group for font faces used in different areas of Emacs. Start with the `Basic Faces` subgroup and customize others as necessary.
 
-If your primary font does not support your local language or script, you need to add a language-specific font to the fontset. For this, you can use the following code in your Init File:
+If your primary font does not support your local language or script, you need to add a language-specific font to the fontset. For example, you can use the following code in your Init File for Bangla language:
 
 ```elisp
 (set-fontset-font "fontset-default" nil "Noto Sans Bengali" nil 'append)
 ```
 
-According to this Elisp expression, Emacs will use the specified font Noto Sans Bengali for rendering Bengali language. This font is usually pre-installed on Android phones. However, if the font you want to use is not on your device, you can create a folder named `fonts` in Emacs' home directory and copy the font file there. But remember, only `.ttf` is currently supported.
+According to this Elisp expression, Emacs will use the specified font Noto Sans Bengali for rendering Bangla language. This font is usually pre-installed on Android phones. However, if the font you want to use is not on your device, you can create a folder named `fonts` in Emacs' home directory and copy the font file there. But remember, only `.ttf` is currently supported.
 
 ### Beyond Code Editing
 
-As mentioned before, you can do much more in Emacs than just coding. Emacs comes with built-in packages for various tasks, and you can also install more. Here are some examples of what you can do with Emacs:
+As I mentioned earlier, you can do much more in Emacs than just code editing. You might think - a code editor's job is coding, why do everything in it! However, while coding, it is annoying to leave the editor for related works such as contacting your clients/colleagues, planning your works or finding out related info from the internet. It breaks your concentration. And because of Emacs' features, you can use similar commands for various tasks. This is especially convenient when those tasks are related to programming.
 
-#### Task & Project Management with Org Mode
-Org Mode is a powerful writing tool and organizer . It uses a simple markup language and is excellent for taking notes, managing todos, and planning projects. Press `TAB` on a heading to fold/unfold its content. Read the [Org Mode manual](https://www.gnu.org/software/emacs/manual/org.html) to learn more.
+Emacs comes with built-in packages for various tasks, and you can install more. Here are some examples: 
 
-#### Web Browsing with EWW
-Use `M-x eww` to open Emacs's built-in browser. It's a simple, distraction-free browser perfect for quickly looking up documentation without leaving your editor.
+#### Task & Project Planning
 
-#### Email with Gnus or mu4e
-Read email and newsgroups directly in Emacs using Gnus (`M-x gnus`) or the [mu4e](https://www.djcbsoftware.nl/code/mu/mu4e.html) package.
+You can use Org Mode to create and manage your tasks and plans in Emacs. Org Mode is a writing tool and task planner for Emacs. This feature often comes up in discussions about Emacs. Org is essentially a markup language - you can call it an alternative to Markdown. But its syntax is simpler than Markdown. Although you can use Org files in other editors, Emacs has some smart features for it. For example, you can press `TAB` on a heading line in an Org file to hide the text and subheadings under it. Pressing `TAB` repeatedly will reveal the subheadings step by step. Pressing `S-TAB` anywhere in the Org Mode buffer will cycle through visibility levels for the entire file. Org files can include source code blocks and therefore you can use it for technical documentation. Read the [relevant manual](https://www.gnu.org/software/emacs/manual/org.html) to learn more about Org Mode.
+
+#### Web Browsing
+
+Emacs has a simple HTML-only web browser. It is called EWW. Run it with the `M-x eww` command. It's great for quickly looking up information or reading documentation while coding. Websites often distract us with various elements - the browser's simple interface saves you from that.
+
+#### Email & News Reading
+
+You can read email and news in Emacs using Gnus. Initially, this program used to be a Usenet-style newsreader. However, it can now also function as an email client, though its approach to reading mail is still similar to newsreader. Read the [Gnus manual](https://www.gnu.org/software/emacs/manual/gnus.html) for details. You can also use the [mu4e](https://www.djcbsoftware.nl/code/mu/mu4e.html) package to read emails in Emacs.
 
 #### Calendar & Diary
-Manage your schedule with `M-x calendar`. You can record events and appointments in the integrated diary.
 
-#### Reading Documents
-Emacs can view PDFs, EPUBs, and Office documents using its document viewer (`C-x C-f` on a document file).
+Emacs has a [Desk Calendar](https://www.gnu.org/software/emacs/manual/html_node/emacs/Calendar_002fDiary.html) feature, which also includes a diary for recording events. You can use it to manage appointments and track time in your projects. Type `M-x calendar` to view the calendar. Press `q` to exit the calendar.
 
-#### File Management with Dired
-Use Dired (`C-x d`) for powerful file management without leaving Emacs.
+#### Reading Books
+
+You can [even read books](https://www.gnu.org/software/emacs/manual/html_node/emacs/Document-View.html) in Emacs. It supports various file formats like PDF, OpenDocument, Microsoft Office, EPUB, PostScript (PS), and more.
+
+#### File Manager
+
+Emacs has its own file manager called [Dired](https://www.gnu.org/software/emacs/manual/html_node/emacs/Dired.html). It's very simple and useful for easily finding files while coding.
 
 ### Read Emacs Manuals
 
@@ -193,9 +229,23 @@ Emacs is a feature-packed editor and you will need help from time to time. The b
 
 - and [other manuals](https://www.gnu.org/software/emacs/manual/index.html)
 
-You can read them from inside Emacs with `C-h i` or [online](https://www.gnu.org/software/emacs/manual/index.html). `C-h r` opens the Emacs manual. Typing `i` inside a manual lets you look for topics which is very handy. You can also learn more about various functions, variables, modes etc. and their values with `describe-*` commands like `describe-function`, `describe-mode`, `describe-variable` etc. Simply type `M-x` or **File > Execute Command** to get started.
+You can read them from inside Emacs with `C-h i` or [online](https://www.gnu.org/software/emacs/manual/index.html). `C-h r` opens the Emacs manual. Typing `i` inside a manual lets you look for topics which is very handy. You can easily find Android-related topics from the manual here. However, there's actually a separate section in the manual specifically for Android - [Appendix H Emacs and Android](https://www.gnu.org/software/emacs/manual/html_node/emacs/Android.html). Particularly, you can read the following sections:
+
+- [Accessing Files from Other Programs on Android](https://www.gnu.org/software/emacs/manual/html_node/emacs/Android-Document-Providers.html)
+
+- [What Files Emacs Can Access on Android](https://www.gnu.org/software/emacs/manual/html_node/emacs/Android-File-System.html)
+
+- [Running Emacs under Android](https://www.gnu.org/software/emacs/manual/html_node/emacs/Android-Environment.html)
+
+- [Installing Extra Software on Android](https://www.gnu.org/software/emacs/manual/html_node/emacs/Android-Software.html)
+
+- [Touchscreen Input and Virtual Keyboards](https://www.gnu.org/software/emacs/manual/html_node/emacs/Other-Input.html)
+
+- [Touchscreen Events](https://www.gnu.org/software/emacs/manual/html_node/elisp/Touchscreen-Events.html)
+
+Also, don't forget to read Emacs Android [README](https://ftp.gnu.org/gnu/emacs/android/README). You can also learn more about various functions, variables, modes etc. and their values with `describe-*` commands like `describe-function`, `describe-mode`, `describe-variable` etc. Simply type `M-x` or **File > Execute Command** to get started.
 
 <br />
-That's it! Now, you have a basic Emacs setup on Android. If you run into issues, drop a comment below. Found this guide helpful? Share it with fellow coders!
+That's it! Now you have a basic Emacs setup on Android. If you run into any issues, drop a comment below. That's all for today. I'll be back soon with more beautiful articles, insha'Allah. If you found this article helpful, please don't forget to share it with fellow coders! Share it to help your helpless talented friend who can't learn programming due to lack of a computer.
 
-Do you want to learn programming but don't have a computer? I can help you set up a coding environment on your Android phone with Emacs for a small fee. I also provide [IT services](services) ranging from IT support to web development. If you need help with issues regarding use of technology, if you wanna learn it or if you want to have your own website developed by me, do contact me [here](mailto:khalids_shell.l3rmw@slmail.me).
+Do you want to learn programming but don't have a computer? I can help you set up a coding environment on your Android phone with Emacs. Furthermore, I provide other [IT services](services) ranging from IT support to web development. If you need help with technology-related issues, if you want to learn about technology, or if you want to have your own website developed by me, please email me at [khalids_shell.l3rmw@slmail.me](mailto:khalids_shell.l3rmw@slmail.me)
