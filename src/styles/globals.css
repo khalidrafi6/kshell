@@ -60,6 +60,7 @@ a {
   color: var(--primary-light);
   text-decoration: none;
   transition: color 0.15s ease;
+  overflow-wrap: anywhere;
 }
 
 a:hover {
