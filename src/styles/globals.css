@@ -59,6 +59,7 @@ button a:hover {
 a {
   color: var(--primary-light);
   text-decoration: none;
+  overflow-wrap: break-word;
   transition: color 0.15s ease;
 }
 
