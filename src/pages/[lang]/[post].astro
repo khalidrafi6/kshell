@@ -155,7 +155,15 @@ const tags = post.data.tags.map((tag) => tag.id);
           </div>
         </div>
       </div>
-      <Content />
+    </Card>
+    {post.data.affiliate ?
+    <Card class="aff_card">
+        <i>{t("article.affiliate")}</i>
+    </Card>
+    : null
+    }
+    <Card>
+    <Content />
       {post.data.affiliate ?
 <script>
       const aff = document.getElementById("aff_link");
@@ -168,12 +176,7 @@ const tags = post.data.tags.map((tag) => tag.id);
         >← {t("article.back")}</a
       >
     </Card>
-    {post.data.affiliate ?
-    <Card class="aff_card">
-        <i>{t("article.affiliate")}</i>
-    </Card>
-    : null
-    }
+    
     <!-- { -->
     <!--   giscus && ( -->
     <!--     <Card> -->
