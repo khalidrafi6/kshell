@@ -100,7 +100,7 @@ const tags = post.data.tags.map((tag) => tag.id);
       </ul>
     </Card>
       {post.data.toc ?
-    <Card class="toc-card">
+    <Card class="toc-card" style="height: 90vh; overflow: scroll;">
       <h2 class="no-mt">{t("article.toc")}</h2>
       <ol>
         <li class="toc-li">
@@ -317,6 +317,12 @@ s_msg();
   margin-bottom: 1rem;
 }
 
+ .toc-card {
+     position: sticky;
+     top: 2rem;
+
+     /* To have a scrollbar in toc card */
+ }
 
   .toc-card ol {
     padding: 0;
@@ -351,15 +357,6 @@ s_msg();
     position: relative;
   }
 
-  .toc-card {
-    position: sticky;
-    top: 2rem;
-
-      /* To have a scrollbar in toc card */
-    height: 90vh;
-      overflow: scroll;
-  }
-
   article {
     display: flex;
     flex-direction: column;
@@ -382,5 +379,5 @@ s_msg();
       position: static;
     }
     }
-  }
+  
 </style>

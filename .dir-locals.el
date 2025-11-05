@@ -1,1 +1,1 @@
-((nil . ((projectile-project-run-cmd . "pnpm dev"))))
+((nil . ((eval . (kshell-local-keys 1)))))
