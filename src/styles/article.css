@@ -240,7 +240,7 @@ table {
 }
 
 table th {
-  padding: 0.5rem 1.5rem 0.5rem 0;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   border-bottom: 1px solid #353535;
 }
 
@@ -253,7 +253,7 @@ table tbody tr {
 }
 
 table tbody tr td {
-  padding: 0.5rem 1.5rem 0.5rem 0;
+  padding: 0.5rem 1.5rem 0.5rem 1rem;
 }
 
 /* For Emacs Bangla article */
