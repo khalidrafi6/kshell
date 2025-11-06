@@ -365,6 +365,27 @@ s_msg();
     gap: 2rem;
   }
 
+article table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+article table th,
+article table td {
+    padding: 0.5rem 1rem;
+    border: 1px solid #353535;
+    min-width: 100px; /* Prevent columns from being too narrow */
+}
+
+article table th {
+    background-color: #1a1a1a;
+    font-weight: 600;
+}
+
+
   .reactions-card {
     text-align: center;
   }
