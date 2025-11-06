@@ -19,6 +19,12 @@ const { class: className, ...props } = Astro.props;
     padding: 1.5rem;
     overflow: hidden;
   }
+
+  /* Allow specific cards to override overflow */
+  .card:global(.toc-card) {
+      max-height: 90vh;
+    overflow: scroll;
+  }
   .comments-card-bn {
     /* color-scheme: dark; */
     background-color: #1c1b22;
