@@ -41,16 +41,51 @@ const observer = new IntersectionObserver(
       break;
     }
 
-    if (visible) {
-      for (const key of tocMap.keys()) {
-        if (key !== visible) {
-          const link = tocMap.get(key);
-          if (link) link.classList.remove("active");
-        }
+      // Previous code before interactive scrolling
+      // if (visible) {
+      //   for (const key of tocMap.keys()) {
+      //     if (key !== visible) {
+      //       const link = tocMap.get(key);
+      //       if (link) link.classList.remove("active");
+      //     }
+      //   }
+      // }
+
+      // For interactive scrolling
+      if (visible) {
+          const activeLink = tocMap.get(visible);
+          
+          for (const key of tocMap.keys()) {
+              if (key !== visible) {
+                  const link = tocMap.get(key);
+                  if (link) link.classList.remove("active");
+              }
+          }
+
+          // Auto-scroll TOC to show active link
+          if (activeLink) {
+              const tocCard = activeLink.closest(".toc-card");
+              if (tocCard) {
+                  const linkOffsetTop = activeLink.offsetTop;
+                  const tocScrollTop = tocCard.scrollTop;
+                  const tocHeight = tocCard.clientHeight;
+                  const linkHeight = activeLink.clientHeight;
+                  
+                  // Calculate target scroll position to center the link
+                  const targetScroll = linkOffsetTop - (tocHeight / 2) + (linkHeight / 2);
+                  
+                  tocCard.scrollTo({
+                      top: targetScroll,
+                      behavior: "smooth"
+                  });
+              }
+          }
       }
-    }
+      // END interactive scrolling
+
+
   },
-  { threshold: 0, root: null, rootMargin: "0px" },
+    { threshold: 0, root: null, rootMargin: "0px" },
 );
 
 for (const heading of headings) {
