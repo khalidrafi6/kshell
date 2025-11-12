@@ -144,7 +144,7 @@ If you want to use Emacs on Android without a physical keyboard, GUI elements li
 
 Emacs on Android hides on-screen keyboard in read-only buffers by default to save screen space. You can usually perform actions from the menu bar or tool bar what you would otherwise do with a keyboard. But, having the keyboard is still very useful. Turn on `touch-screen-display-keyboard` to always display the keyboard. 
 
-### Enable support for keybindings of some packages
+### Enable support for keybinding-reliant packages
 
 Some Emacs packages (e.g. [Evil](https://melpa.org/#/evil)) that rely on globally reading raw key events / keybindings don't work with Android's on-screen keyboard. This is because Android input methods rely on Emacs' text conversion style which lets it implement some features like auto-fill, electric-pair etc. If you use any package that can't work because of this, disable text conversion globally with the variable `overriding-text-conversion-style` or disable it locally per buffer with `text-conversion-style` variable.
 
