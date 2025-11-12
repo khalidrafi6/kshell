@@ -296,10 +296,11 @@ s_msg();
   </article>
 </Layout>
 
-{lang == "bn" ? <script src="../../scripts/toc-bn.ts"></script>
+             {lang == "bn" ? <script src="../../scripts/toc-bn.ts"></script>
             :
             <script src="../../scripts/toc-en.ts"></script>}
-<!-- <style scoped> -->
+
+            <!-- <style scoped> -->
 <!--   .tgme_widget_message_bubble_logo { -->
 <!--     display: none; -->
 <!--   } -->
@@ -320,10 +321,6 @@ s_msg();
  .toc-card {
      position: sticky;
      top: 2rem;
-
-     /* To have a scrollbar in toc card */
-     height: 90vh;
-     overflow: scroll;
  }
 
   .toc-card ol {

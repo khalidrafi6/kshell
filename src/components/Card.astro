@@ -23,7 +23,7 @@ const { class: className, ...props } = Astro.props;
   /* Allow specific cards to override overflow */
   .card:global(.toc-card) {
       max-height: 90vh;
-    overflow: scroll;
+    overflow: auto;
   }
   .comments-card-bn {
     /* color-scheme: dark; */
