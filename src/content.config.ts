@@ -78,7 +78,7 @@ const posts = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      createdAt: z.coerce.date(),
+      createdAt: z.coerce.date().optional(),
       updatedAt: z.coerce.date().optional(),
       description: z.string(),
       toc: z.boolean().optional().default(true),
