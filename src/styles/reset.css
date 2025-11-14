@@ -3,6 +3,27 @@
 }
 
 @font-face {
+	  font-family: "Jannat";
+	  font-style: normal;
+	  font-weight: 400;
+	  font-stretch: 100%;
+	  src: local("Jannat"), url("/fonts/jannat.woff2") format("woff2");
+	  font-display: swap;
+    size-adjust: 125%;
+}
+
+@font-face {
+	  font-family: "Electrolize";
+	font-style: normal;
+	font-weight: 400;
+	font-stretch: 100%;
+	src: local("Electrolize"), local("Electrolize-Regular"), url("/fonts/electrolize.woff2") format("woff2");
+	font-display: swap;
+    /* size-adjust: 115%; */
+}
+
+
+@font-face {
   font-family: "JetBrains Mono";
   src:
     local("JetBrains Mono Light"),
@@ -165,7 +186,7 @@ body {
 
 body {
   -webkit-font-smoothing: antialiased;
-  font-family: "JetBrains Mono", var(--bangla-font);
+  font-family: "Electrolize", var(--bangla-font);
 }
 
 input,
@@ -183,7 +204,7 @@ h5,
 h6,
 code {
   overflow-wrap: anywhere;
-  font-family: "JetBrains Mono", var(--bangla-font);
+  font-family: "Electrolize", var(--bangla-font);
 }
 
 h1,

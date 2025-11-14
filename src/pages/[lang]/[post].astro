@@ -43,9 +43,8 @@ function timeToRead(post: CollectionEntry<"posts">): number {
 // const { post } = Astro.props;
 
 export const getStaticPaths = (async () => {
-  const posts = await getCollection(
-    "posts",
-    (post) => (import.meta.env.PROD ? post.data.draft !== true : true),
+  const posts = await getCollection("posts", (post) =>
+    import.meta.env.PROD ? post.data.draft !== true : true,
   );
 
   const paths = posts.map((post) => {
@@ -60,7 +59,7 @@ export const getStaticPaths = (async () => {
 
 const lang = getLangFromUrl(Astro.url);
 // if (lang === "bn") {
-// const loc = "bn-BD"; 
+// const loc = "bn-BD";
 // } else {
 //   const loc = "en-GB";
 // }
@@ -99,36 +98,39 @@ const tags = post.data.tags.map((tag) => tag.id);
         }
       </ul>
     </Card>
-      {post.data.toc ?
-    <Card class="toc-card" style="">
-      <h2 class="no-mt">{t("article.toc")}</h2>
-      <ol>
-        <li class="toc-li">
-          <a href={`#_top`} class="active">{post.data.title}</a>
-        </li>
-        {
-          headings.map((heading, i) => (
-            <li class="toc-li" data-depth={heading.depth}>
-              <a href={`#${heading.slug}`}>{heading.text}</a>
+    {
+      post.data.toc ? (
+        <Card class="toc-card" style="">
+          <h2 class="no-mt">{t("article.toc")}</h2>
+          <ol>
+            <li class="toc-li">
+              <a href={`#_top`} class="active">
+                {post.data.title}
+              </a>
             </li>
-          ))
-        }
-      </ol>
-    </Card>
-    : null}
+            {headings.map((heading, i) => (
+              <li class="toc-li" data-depth={heading.depth}>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </li>
+            ))}
+          </ol>
+        </Card>
+      ) : null
+    }
   </div>
   <article slot="right" data-pagefind-body>
     <Card>
       <div class="article-header" id="_top" data-pagefind-ignore>
-        {post.data.image ? 
-        <ImageGlow
-          quality={100}
-          class="article-image"
-          src={post.data.image}
-          alt={post.data.title}
-        />
-        : null
-}
+        {
+          post.data.image ? (
+            <ImageGlow
+              quality={100}
+              class="article-image"
+              src={post.data.image}
+              alt={post.data.title}
+            />
+          ) : null
+        }
         <div class="header">
           <div>
             <h1 class="no-mt article-h1">{post.data.title}</h1>
@@ -156,118 +158,94 @@ const tags = post.data.tags.map((tag) => tag.id);
         </div>
       </div>
     </Card>
-    {post.data.affiliate ?
-    <Card class="aff_card">
-        <i>{t("article.affiliate")}</i>
-    </Card>
-    : null
+    {
+      post.data.affiliate ? (
+        <Card class="aff_card">
+          <i>{t("article.affiliate")}</i>
+        </Card>
+      ) : null
     }
     <Card>
-    <Content />
-      {post.data.affiliate ?
-<script>
-      const aff = document.getElementById("aff_link");
-      aff.addEventListener("click", () => {sa_event("aff_link")});
-</script>
-  : null
+      <Content />
+      {
+        post.data.affiliate ? (
+          <script>
+            const aff = document.getElementById("aff_link");
+            aff.addEventListener("click", () => {sa_event("aff_link")});
+          </script>
+        ) : null
       }
       <hr class="end-of-article" />
       <a href=`/${lang}/articles` class="block-link" data-pagefind-ignore
         >← {t("article.back")}</a
       >
     </Card>
-    
-    <!-- { -->
-    <!--   giscus && ( -->
-    <!--     <Card> -->
-    <!--       <div class="comments" data-pagefind-ignore> -->
-    <!--         <script -->
-    <!--           is:inline -->
-    <!--           src="https://giscus.app/client.js" -->
-    <!--           data-repo={giscus.repository} -->
-    <!--           data-repo-id={giscus.repositoryId} -->
-    <!--           data-category={giscus.category} -->
-    <!--           data-category-id={giscus.categoryId} -->
-    <!--           data-mapping={giscus.mapping} -->
-    <!--           data-strict={giscus.strict === true ? "1" : "0"} -->
-    <!--           data-reactions-enabled={ -->
-    <!--             giscus.reactionsEnabled === true ? "1" : "0" -->
-    <!--           } -->
-    <!--           data-emit-metadata={giscus.emitMetadata === true ? "1" : "0"} -->
-    <!--           data-input-position={giscus.commentsInput} -->
-    <!--           data-theme={ -->
-    <!--             giscus.theme || "https://spectre.louisescher.dev/styles/giscus" -->
-    <!--           } -->
-    <!--           data-lang={giscus.lang} -->
-    <!--           data-loading="lazy" -->
-    <!--           crossorigin="anonymous" -->
-    <!--           async -->
-    <!--         /> -->
-    <!--       </div> -->
-    <!--     </Card> -->
-    <!--   ) -->
-    <!-- } -->
-    <Card class="reactions-card">
-<div>
 
+    <Card class="reactions-card">
+      <div>
         <p id="feedback_title">{t("feedback.title")}</p>
 
-<button class="reaction-btn good">👍</button>
+        <button class="reaction-btn good">👍</button>
 
-<button class="reaction-btn bad">👎</button>
+        <button class="reaction-btn bad">👎</button>
 
-<button class="reaction-btn love">❤️</button>
-<button class="reaction-btn excellent">⚡️</button>
+        <button class="reaction-btn love">❤️</button>
+        <button class="reaction-btn excellent">⚡️</button>
 
-        <p id="feedback_message" data-success={t("feedback.success")} data-error={t("feedback.error")}></p>
+        <p
+          id="feedback_message"
+          data-success={t("feedback.success")}
+          data-error={t("feedback.error")}
+        >
+        </p>
+      </div>
+      <script>
+        const btn = document.getElementsByClassName("reaction-btn");
+        const titleElement = document.getElementById("feedback_title");
+        const messageElement = document.getElementById("feedback_message");
 
-</div>
-<script>
+        Array.from(btn).forEach((button) => {
+          button.addEventListener("click", () => {
+            remove();
+            feedback(button.classList[1]);
+          });
+        });
 
-const btn = document.getElementsByClassName("reaction-btn");
-const titleElement = document.getElementById("feedback_title");
-const messageElement = document.getElementById("feedback_message");
-
-Array.from(btn).forEach((button) => {
-  button.addEventListener("click", () => {
-    remove();
-    feedback(button.classList[1]);
-  });
-});
-
-function remove() {
-  titleElement.remove();
-Array.from(btn).forEach((button) => {
-    button.remove();
-  });
-}
-
-
-function feedback(reaction) {
-  try {
-    sa_event("feedback_" + reaction);
-s_msg();
-  } catch (error) {
-    e_msg();
-  } 
-}
-
-         function s_msg() {
-
-                document.getElementById("feedback_message").innerHTML = messageElement.dataset.success;
-
-         }
-
-        function e_msg() {
-          document.getElementById("feedback_message").innerHTML = messageElement.dataset.error;
+        function remove() {
+          titleElement.remove();
+          Array.from(btn).forEach((button) => {
+            button.remove();
+          });
         }
 
-</script>
+        function feedback(reaction) {
+          try {
+            sa_event("feedback_" + reaction);
+            s_msg();
+          } catch (error) {
+            e_msg();
+          }
+        }
+
+        function s_msg() {
+          document.getElementById("feedback_message").innerHTML =
+            messageElement.dataset.success;
+        }
+
+        function e_msg() {
+          document.getElementById("feedback_message").innerHTML =
+            messageElement.dataset.error;
+        }
+      </script>
     </Card>
-      {
-        lang === "bn" ? (
-    <Card class="comments-card-bn">
-      <div class="comments" style="display: flex; justify-content: center;" data-pagefind-ignore>
+    {
+      lang === "bn" ? (
+        <Card class="comments-card-bn">
+          <div
+            class="comments"
+            style="display: flex; justify-content: center;"
+            data-pagefind-ignore
+          >
             <script
               async
               src="https://telegram.org/js/telegram-widget.js?22"
@@ -277,9 +255,9 @@ s_msg();
               data-dark="1"
             />
           </div>
-    </Card>
-        ) : (
-    <Card class="comments-card-en">
+        </Card>
+      ) : (
+        <Card class="comments-card-en">
           <div class="comments" data-pagefind-ignore>
             <script
               async
@@ -291,16 +269,21 @@ s_msg();
               data-dark="1"
             />
           </div>
-    </Card>
-        )}
+        </Card>
+      )
+    }
   </article>
 </Layout>
 
-             {lang == "bn" ? <script src="../../scripts/toc-bn.ts"></script>
-            :
-            <script src="../../scripts/toc-en.ts"></script>}
+{
+  lang == "bn" ? (
+    <script src="../../scripts/toc-bn.ts" />
+  ) : (
+    <script src="../../scripts/toc-en.ts" />
+  )
+}
 
-            <!-- <style scoped> -->
+<!-- <style scoped> -->
 <!--   .tgme_widget_message_bubble_logo { -->
 <!--     display: none; -->
 <!--   } -->
@@ -310,18 +293,17 @@ s_msg();
     opacity: 0.8;
   }
 
+  .tags-card {
+    /* position: sticky; */
+    /* top: 2rem; */
+    /* min-width: 0; */
+    margin-bottom: 1rem;
+  }
 
-.tags-card {
-  /* position: sticky; */
-  /* top: 2rem; */
-  /* min-width: 0; */
-  margin-bottom: 1rem;
-}
-
- .toc-card {
-     position: sticky;
-     top: 2rem;
- }
+  .toc-card {
+    position: sticky;
+    top: 2rem;
+  }
 
   .toc-card ol {
     padding: 0;
@@ -362,28 +344,28 @@ s_msg();
     gap: 2rem;
   }
 
-article table {
+  article table {
     display: block;
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-}
+  }
 
-article table th,
-article table td {
+  article table th,
+  article table td {
     padding: 0.5rem 1.5rem;
     border: 1px solid #353535;
     min-width: 100px; /* Prevent columns from being too narrow */
-}
+  }
 
-article table th {
+  article table th {
     background-color: #1a1a1a;
     font-weight: 600;
-}
-
+  }
 
   .reactions-card {
+    display: none;
     text-align: center;
   }
 
@@ -398,6 +380,5 @@ article table th {
     .toc-card {
       position: static;
     }
-    }
-  
+  }
 </style>

@@ -86,7 +86,7 @@ class PageBackground {
     const lines = Math.ceil(this.height / 35);
 
     // Loop through the canvas and draw the text
-    this.baseCtx.font = "28px JetBrains Mono";
+    this.baseCtx.font = "28px Electrolize";
     this.baseCtx.textAlign = "start";
     this.baseCtx.textBaseline = "top";
     this.baseCtx.fillStyle = "rgba(255, 255, 255, 0.01)";
@@ -108,7 +108,7 @@ class PageBackground {
       Number.parseInt((lines * 0.75).toFixed()),
     );
 
-    this.overlayCtx.font = "bold 28px JetBrains Mono";
+    this.overlayCtx.font = "bold 28px Electrolize";
     this.overlayCtx.textAlign = "start";
     this.overlayCtx.textBaseline = "top";
     this.overlayCtx.fillStyle = `rgba(${this.primaryRgb}, 0)`;
@@ -205,7 +205,7 @@ class PageBackground {
       this.overlayCanvas.height,
     );
 
-    this.overlayCtx.font = "bold 28px JetBrains Mono";
+    this.overlayCtx.font = "bold 28px Electrolize";
     this.overlayCtx.textAlign = "start";
     this.overlayCtx.textBaseline = "top";
     this.overlayCtx.shadowBlur = 16;
