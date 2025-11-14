@@ -204,7 +204,7 @@ h5,
 h6,
 code {
   overflow-wrap: anywhere;
-  font-family: "Electrolize", var(--bangla-font);
+  font-family: "JetBrains Mono";
 }
 
 h1,
