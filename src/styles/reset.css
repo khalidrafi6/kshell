@@ -244,7 +244,7 @@ h4,
 h5,
 h6 {
     overflow-wrap: anywhere;
-    font-family: "Electrolize", "Jannat";
+    /* font-family: "Electrolize", "Jannat"; */
 }
 
 code {
