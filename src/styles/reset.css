@@ -1,6 +1,28 @@
 :root {
-    --bangla-font: "Potro Sans Bangla";
+    --bangla-font: "Anek Bangla";
 }
+
+/* @font-face { */
+/* 	  font-family: "Hind Siliguri"; */
+/* 	  font-style: normal; */
+/* 	  font-weight: 400; */
+/* 	  font-stretch: 100%; */
+/* 	  src: local("Hind Siliguri Regular"), local("HindSiliguri-Regular"), url("/fonts/hind-siliguri.woff2") format("woff2"); */
+/* 	  font-display: swap; */
+/*     size-adjust: 115%; */
+/* } */
+
+/* anek-bangla-medium */
+@font-face {
+	font-family: "Anek Bangla";
+	font-style: normal;
+	font-weight: 75% 125%;
+	font-stretch: 100%;
+	src: local("Anek Bangla Medium"), local("AnekBangla-Medium"), url("/fonts/anek-bangla-medium.woff2") format("woff2");
+	font-display: swap;
+  size-adjust: 105%;
+}
+
 
 @font-face {
 	  font-family: "Jannat";
@@ -203,7 +225,7 @@ h4,
 h5,
 h6 {
     overflow-wrap: anywhere;
-    font-family: "Electrolize";
+    font-family: "Electrolize", "Jannat";
 }
 
 code {
