@@ -6,7 +6,7 @@ const tocMap = new Map<Element, HTMLElement>();
 
 // Map TOC links to their corresponding headings
 for (const link of tocLinks) {
-  const id = link.href.split('#')[1];
+  const id = link.href.split("#")[1];
   const heading = document.getElementById(id);
   if (heading) tocMap.set(heading, link as HTMLElement);
 }

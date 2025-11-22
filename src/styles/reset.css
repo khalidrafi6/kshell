@@ -1,5 +1,5 @@
 :root {
-    --bangla-font: "Anek Bangla";
+  --bangla-font: "Anek Bangla";
 }
 
 /* @font-face { */
@@ -14,55 +14,67 @@
 
 /* jetbrains-mono-italic */
 @font-face {
-	  font-family: "JetBrains Mono";
-	  font-style: italic;
-	  font-weight: 100 800;
-	  font-stretch: 100%;
-	  src: local("JetBrains Mono Italic"), local("JetBrainsMono-Italic"), url("/fonts/jetbrains-mono-italic.woff2") format("woff2");
-	  font-display: swap;
+  font-family: "JetBrains Mono";
+  font-style: italic;
+  font-weight: 100 800;
+  font-stretch: 100%;
+  src:
+    local("JetBrains Mono Italic"),
+    local("JetBrainsMono-Italic"),
+    url("/fonts/jetbrains-mono-italic.woff2") format("woff2");
+  font-display: swap;
 }
 /* jetbrains-mono */
 @font-face {
-	  font-family: "JetBrains Mono";
-	  font-style: normal;
-	  font-weight: 100 800;
-	  font-stretch: 100%;
-	  src: local("JetBrains Mono Regular"), local("JetBrainsMono-Regular"), url("/fonts/jetbrains-mono.woff2") format("woff2");
-	  font-display: swap;
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-stretch: 100%;
+  src:
+    local("JetBrains Mono Regular"),
+    local("JetBrainsMono-Regular"),
+    url("/fonts/jetbrains-mono.woff2") format("woff2");
+  font-display: swap;
 }
 
 /* anek-bangla-medium */
 @font-face {
-	font-family: "Anek Bangla";
-	font-style: normal;
-	font-weight: 75% 125%;
-	font-stretch: 100%;
-	src: local("Anek Bangla Medium"), local("AnekBangla-Medium"), url("/fonts/anek-bangla-medium.woff2") format("woff2");
-	font-display: swap;
+  font-family: "Anek Bangla";
+  font-style: normal;
+  font-weight: 75% 125%;
+  font-stretch: 100%;
+  src:
+    local("Anek Bangla Medium"),
+    local("AnekBangla-Medium"),
+    url("/fonts/anek-bangla-medium.woff2") format("woff2");
+  font-display: swap;
   size-adjust: 105%;
 }
 
-
 @font-face {
-	  font-family: "Jannat";
-	  font-style: normal;
-	  font-weight: 300;
-	  font-stretch: 100%;
-	  src: local("Jannat"), url("/fonts/jannat.woff2") format("woff2");
-	  font-display: swap;
-    size-adjust: 125%;
+  font-family: "Jannat";
+  font-style: normal;
+  font-weight: 300;
+  font-stretch: 100%;
+  src:
+    local("Jannat"),
+    url("/fonts/jannat.woff2") format("woff2");
+  font-display: swap;
+  size-adjust: 125%;
 }
 
 @font-face {
-	  font-family: "Electrolize";
-	  font-style: normal;
-	  font-weight: 400;
-	  font-stretch: 100%;
-	  src: local("Electrolize"), local("Electrolize-Regular"), url("/fonts/Electrolize.woff2") format("woff2");
-	  font-display: swap;
-    /* size-adjust: 115%; */
+  font-family: "Electrolize";
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  src:
+    local("Electrolize"),
+    local("Electrolize-Regular"),
+    url("/fonts/Electrolize.woff2") format("woff2");
+  font-display: swap;
+  /* size-adjust: 115%; */
 }
-
 
 /* @font-face { */
 /*     font-family: "JetBrains Mono"; */
@@ -114,55 +126,55 @@
 
 /* potro-sans-bangla-bold */
 @font-face {
-    font-family: Potro Sans Bangla;
-    font-style: normal;
-    font-weight: 700;
-    font-stretch: 100%;
-    size-adjust: 115%;
-    src:
-        local("Potro Sans Bangla Bold"),
-        local("PotroSansBangla-Bold"),
-        url("/fonts/potro-sans/potro-sans-bangla-bold.woff2") format("woff2");
-    font-display: swap;
+  font-family: Potro Sans Bangla;
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  size-adjust: 115%;
+  src:
+    local("Potro Sans Bangla Bold"),
+    local("PotroSansBangla-Bold"),
+    url("/fonts/potro-sans/potro-sans-bangla-bold.woff2") format("woff2");
+  font-display: swap;
 }
 /* potro-sans-bangla-medium */
 @font-face {
-    font-family: Potro Sans Bangla;
-    font-style: normal;
-    font-weight: 500;
-    font-stretch: 100%;
-    size-adjust: 115%;
-    src:
-        local("Potro Sans Bangla Medium"),
-        local("PotroSansBangla-Medium"),
-        url("/fonts/potro-sans/potro-sans-bangla-medium.woff2") format("woff2");
-    font-display: swap;
+  font-family: Potro Sans Bangla;
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  size-adjust: 115%;
+  src:
+    local("Potro Sans Bangla Medium"),
+    local("PotroSansBangla-Medium"),
+    url("/fonts/potro-sans/potro-sans-bangla-medium.woff2") format("woff2");
+  font-display: swap;
 }
 /* potro-sans-bangla */
 @font-face {
-    font-family: Potro Sans Bangla;
-    font-style: normal;
-    font-weight: 400;
-    font-stretch: 100%;
-    size-adjust: 115%;
-    src:
-        local("Potro Sans Bangla Regular"),
-        local("PotroSansBangla-Regular"),
-        url("/fonts/potro-sans/potro-sans-bangla.woff2") format("woff2");
-    font-display: swap;
+  font-family: Potro Sans Bangla;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  size-adjust: 115%;
+  src:
+    local("Potro Sans Bangla Regular"),
+    local("PotroSansBangla-Regular"),
+    url("/fonts/potro-sans/potro-sans-bangla.woff2") format("woff2");
+  font-display: swap;
 }
 /* potro-sans-bangla-semibold */
 @font-face {
-    font-family: Potro Sans Bangla;
-    font-style: normal;
-    font-weight: 600;
-    font-stretch: 100%;
-    size-adjust: 115%;
-    src:
-        local("Potro Sans Bangla SemiBold"),
-        local("PotroSansBangla-SemiBold"),
-        url("/fonts/potro-sans/potro-sans-bangla-semibold.woff2") format("woff2");
-    font-display: swap;
+  font-family: Potro Sans Bangla;
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  size-adjust: 115%;
+  src:
+    local("Potro Sans Bangla SemiBold"),
+    local("PotroSansBangla-SemiBold"),
+    url("/fonts/potro-sans/potro-sans-bangla-semibold.woff2") format("woff2");
+  font-display: swap;
 }
 
 /* @font-face { */
@@ -203,17 +215,17 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box !important;
+  box-sizing: border-box !important;
 }
 
 html {
-    color-scheme: dark;
-    background-color: #0b0b0b;
+  color-scheme: dark;
+  background-color: #0b0b0b;
 }
 
 html,
 body {
-    margin: 0;
+  margin: 0;
 }
 
 /* html[lang="bn"] { */
@@ -226,15 +238,15 @@ body {
 /* } */
 
 body {
-    -webkit-font-smoothing: antialiased;
-    font-family: "Electrolize", var(--bangla-font);
+  -webkit-font-smoothing: antialiased;
+  font-family: "Electrolize", var(--bangla-font);
 }
 
 input,
 button,
 textarea,
 select {
-    font: inherit;
+  font: inherit;
 }
 
 h1,
@@ -243,14 +255,14 @@ h3,
 h4,
 h5,
 h6 {
-    overflow-wrap: anywhere;
-    /* font-family: "Electrolize", "FN Al Amin Bindu Uni&BE"; */
-    /* font-weight: 5; */
+  overflow-wrap: anywhere;
+  /* font-family: "Electrolize", "FN Al Amin Bindu Uni&BE"; */
+  /* font-weight: 5; */
 }
 
 code {
-    overflow-wrap: anywhere;
-    font-family: "JetBrains Mono";
+  overflow-wrap: anywhere;
+  font-family: "JetBrains Mono";
 }
 
 h1,
@@ -259,37 +271,37 @@ h3,
 h4,
 h5,
 h6 {
-    text-wrap: pretty;
+  text-wrap: pretty;
 }
 
 button {
-    border: none;
-    outline: none;
-    background: none;
-    padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
 }
 
 p:last-of-type {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 pre,
 pre *,
 .code {
-    font-family: "JetBrains Mono", var(--bangla-font);
-    line-height: 1;
+  font-family: "JetBrains Mono", var(--bangla-font);
+  line-height: 1;
 }
 
 pre {
-    border: 1px solid rgb(#353535);
-    overflow-y: hidden;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
+  border: 1px solid rgb(#353535);
+  overflow-y: hidden;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
 }
 
 pre.astro-code code {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.875em;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.875em;
+  gap: 0.5rem;
 }

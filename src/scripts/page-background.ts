@@ -280,10 +280,7 @@ class PageBackground {
  * Loads the Electrolize font. We have to do this asynchronously because the font is not preloaded.
  */
 async function loadFont() {
-  const font = new FontFace(
-    "Electrolize",
-    "url(/fonts/Electrolize.woff2)",
-  );
+  const font = new FontFace("Electrolize", "url(/fonts/Electrolize.woff2)");
 
   await font.load();
 

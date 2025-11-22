@@ -18,7 +18,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 const aboutURL = getRelativeLocaleUrl("en", "about");
 
 const [posts, index, quickInfo, socials] = await Promise.all([
-    getCollection("posts", ({ id, data }) => {
+  getCollection("posts", ({ id, data }) => {
     return (
       id.startsWith("en/") &&
       (import.meta.env.PROD ? data.draft !== true : true)

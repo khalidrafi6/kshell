@@ -199,44 +199,44 @@ const tags = post.data.tags.map((tag) => tag.id);
         >
         </p>
       </div>
-      <script>
-        const btn = document.getElementsByClassName("reaction-btn");
-        const titleElement = document.getElementById("feedback_title");
-        const messageElement = document.getElementById("feedback_message");
+      <!-- <script>
+           const btn = document.getElementsByClassName("reaction-btn");
+           const titleElement = document.getElementById("feedback_title");
+           const messageElement = document.getElementById("feedback_message");
 
-        Array.from(btn).forEach((button) => {
-          button.addEventListener("click", () => {
-            remove();
-            feedback(button.classList[1]);
-          });
-        });
+           Array.from(btn).forEach((button) => {
+           button.addEventListener("click", () => {
+           remove();
+           feedback(button.classList[1]);
+           });
+           });
 
-        function remove() {
-          titleElement.remove();
-          Array.from(btn).forEach((button) => {
-            button.remove();
-          });
-        }
+           function remove() {
+           titleElement.remove();
+           Array.from(btn).forEach((button) => {
+           button.remove();
+           });
+           }
 
-        function feedback(reaction) {
-          try {
-            sa_event("feedback_" + reaction);
-            s_msg();
-          } catch (error) {
-            e_msg();
-          }
-        }
+           function feedback(reaction) {
+           try {
+           sa_event("feedback_" + reaction);
+           s_msg();
+           } catch (error) {
+           e_msg();
+           }
+           }
 
-        function s_msg() {
-          document.getElementById("feedback_message").innerHTML =
-            messageElement.dataset.success;
-        }
+           function s_msg() {
+           document.getElementById("feedback_message").innerHTML =
+           messageElement.dataset.success;
+           }
 
-        function e_msg() {
-          document.getElementById("feedback_message").innerHTML =
-            messageElement.dataset.error;
-        }
-      </script>
+           function e_msg() {
+           document.getElementById("feedback_message").innerHTML =
+           messageElement.dataset.error;
+           }
+           </script> -->
     </Card>
     {
       lang === "bn" ? (
@@ -269,12 +269,12 @@ const tags = post.data.tags.map((tag) => tag.id);
                      data-dark="1"
                      /> -->
 
-                <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion="khalids_shell" data-comments-limit="10" data-color="1a73e8" data-dark="1"></script>
+                <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion={`khalids_shell/${post.data.telegram}`} data-comments-limit="10" data-color="1a73e8" data-dark="1"></script>
 
             </div>
         </Card>
-      )
-    }
+        )
+        }
   </article>
 </Layout>
 
