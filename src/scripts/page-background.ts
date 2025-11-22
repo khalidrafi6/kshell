@@ -277,12 +277,12 @@ class PageBackground {
 }
 
 /**
- * Loads the JetBrains Mono font. We have to do this asynchronously because the font is not preloaded.
+ * Loads the Electrolize font. We have to do this asynchronously because the font is not preloaded.
  */
 async function loadFont() {
   const font = new FontFace(
-    "JetBrains Mono",
-    "url(/fonts/JetBrainsMono-Regular.woff2)",
+    "Electrolize",
+    "url(/fonts/Electrolize.woff2)",
   );
 
   await font.load();

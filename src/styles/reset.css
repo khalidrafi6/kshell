@@ -46,7 +46,7 @@
 @font-face {
 	  font-family: "Jannat";
 	  font-style: normal;
-	  font-weight: 400;
+	  font-weight: 300;
 	  font-stretch: 100%;
 	  src: local("Jannat"), url("/fonts/jannat.woff2") format("woff2");
 	  font-display: swap;
@@ -58,7 +58,7 @@
 	  font-style: normal;
 	  font-weight: 400;
 	  font-stretch: 100%;
-	  src: local("Electrolize"), local("Electrolize-Regular"), url("/fonts/electrolize.woff2") format("woff2");
+	  src: local("Electrolize"), local("Electrolize-Regular"), url("/fonts/Electrolize.woff2") format("woff2");
 	  font-display: swap;
     /* size-adjust: 115%; */
 }
@@ -244,7 +244,8 @@ h4,
 h5,
 h6 {
     overflow-wrap: anywhere;
-    /* font-family: "Electrolize", "Jannat"; */
+    /* font-family: "Electrolize", "FN Al Amin Bindu Uni&BE"; */
+    /* font-weight: 5; */
 }
 
 code {
