@@ -1,0 +1,159 @@
+---
+import { getLangFromUrl } from '../i18n/utils';
+import { getCollection } from 'astro:content';
+
+const lang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+
+// Extract the article slug from the current path
+const pathParts = currentPath.split('/').filter(Boolean);
+const currentSlug = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
+
+// Get all articles from both languages
+const allPosts = await getCollection('posts');
+
+// Find the corresponding article in the other language
+const otherLang = lang === 'en' ? 'bn' : 'en';
+
+const correspondingPost = allPosts.find(post => {
+  const [postLang, postSlug] = post.id.split('/');
+  return postLang === otherLang && postSlug === currentSlug;
+});
+
+const hasTranslation = !!correspondingPost;
+const switchUrl = hasTranslation 
+  ? `/${otherLang}/${currentSlug}/`
+  : `/${otherLang}/articles/`;
+
+const switchLabel = otherLang === 'bn' ? 'বাংলা' : 'English';
+---
+
+<div class="lang-switcher">
+  {hasTranslation ? (
+    <a href={switchUrl} class="lang-btn" title={`Read in ${switchLabel}`}>
+      <span class="icon">🌏</span>
+      <span class="text">{switchLabel}</span>
+      <span class="arrow">→</span>
+    </a>
+    ) : null}
+    <!-- (
+         <button class="lang-btn disabled" disabled title="Translation not available">
+         <span class="icon">󰗊</span>
+         <span class="text">{switchLabel}</span>
+         <span class="badge">N/A</span>
+         </button>
+         ) -->
+    
+</div>
+
+<style>
+  .lang-switcher {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+  }
+
+  .lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, rgba(26, 115, 232, 0.1), rgba(66, 133, 244, 0.15));
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    border-radius: 12px;
+    position: relative;
+    color: #e8eaed;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+  }
+
+  .lang-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(135deg, #1a73e8, #4285f4, #8ab4f8);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .lang-btn:not(.disabled):hover {
+    background: linear-gradient(135deg, rgba(26, 115, 232, 0.2), rgba(66, 133, 244, 0.25));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26, 115, 232, 0.3);
+  }
+
+  .lang-btn:not(.disabled):hover::before {
+    opacity: 1;
+  }
+
+  .lang-btn:not(.disabled):active {
+    transform: translateY(0);
+  }
+
+  .icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  }
+
+  .text {
+    letter-spacing: 0.02em;
+  }
+
+  .arrow {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+    color: #1a73e8;
+  }
+
+  .lang-btn:not(.disabled):hover .arrow {
+    transform: translateX(4px);
+    color: #4285f4;
+  }
+
+  .badge {
+    padding: 0.25rem 0.5rem;
+    background: rgba(244, 67, 54, 0.15);
+    border: 1px solid rgba(244, 67, 54, 0.3);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: #f44336;
+    font-weight: 700;
+  }
+
+  .lang-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: rgba(128, 128, 128, 0.1);
+  }
+
+  .lang-btn.disabled .icon {
+    filter: grayscale(1);
+  }
+
+  @media (max-width: 768px) {
+    .lang-switcher {
+      justify-content: center;
+    }
+
+    .lang-btn {
+      padding: 0.65rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .icon {
+      font-size: 1.25rem;
+    }
+  }
+</style>
