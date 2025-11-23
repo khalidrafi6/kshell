@@ -295,13 +295,17 @@ const tags = post.data.tags.map((tag) => tag.id);
 
 {
   lang == "bn" ? (
-    <script src="../../scripts/toc-bn.ts" />
+<script src="../../scripts/toc-bn.ts"></script>
   ) : (
-    <script src="../../scripts/toc-en.ts" />
+<script src="../../scripts/toc-en.ts"></script>
   )
 }
 
-<script>
+<!-- <script src="../../scripts/toc-toggle.js" is:inline></script> -->
+
+<script is:inline>
+
+
   // Mobile TOC Toggle
   const tocToggle = document.getElementById('tocToggle');
   const tocCard = document.getElementById('tocCard');
@@ -335,6 +339,8 @@ const tags = post.data.tags.map((tag) => tag.id);
       }
     });
   }
+
+
 </script>
 
 <!-- <style scoped> -->

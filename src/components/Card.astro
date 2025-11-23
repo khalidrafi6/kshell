@@ -24,7 +24,16 @@ const { class: className, ...props } = Astro.props;
   .card:global(.toc-card) {
     max-height: 90vh;
     overflow: auto;
+      height: max-content;
   }
+
+ @media screen and (max-width: 640px) {
+
+     .card:global(.toc-card) {
+         max-height: 75vh;
+     }
+ }
+
   .comments-card-bn {
     /* color-scheme: dark; */
     background-color: #1c1b22;
