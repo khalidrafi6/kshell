@@ -100,7 +100,6 @@ const tags = post.data.tags.map((tag) => tag.id);
     </Card>
     {
       post.data.toc ? (
-        <>
           {/* Mobile TOC Button */}
           <button class="toc-toggle-btn" id="tocToggle">
             <span class="toc-icon">📜</span>
@@ -468,10 +467,10 @@ const tags = post.data.tags.map((tag) => tag.id);
 
   /* TOC Header with Close Button */
   .toc-header {
-    display: none;
+      /* display: none; */
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
+      /* align-items: center; */
+      margin-bottom: .5rem;
   }
 
   .toc-close-btn {
@@ -511,7 +510,7 @@ const tags = post.data.tags.map((tag) => tag.id);
       right: 0;
       bottom: 0;
       z-index: 1000;
-      margin: 0;
+      margin: 2.5vw;
       background: rgba(0, 0, 0, 0.9);
       backdrop-filter: blur(10px);
       transform: translateX(100%);
@@ -530,6 +529,10 @@ const tags = post.data.tags.map((tag) => tag.id);
     .toc-header {
       display: flex;
     }
+
+      .toc-header h2 {
+          margin-bottom: 0;
+      }
 
     .toc-close-btn {
       display: block;
