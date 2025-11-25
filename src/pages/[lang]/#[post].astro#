@@ -1,0 +1,563 @@
+---
+import "../../styles/article.css";
+
+import ImageGlow from "../../components/ImageGlow.astro";
+import Card from "../../components/Card.astro";
+import Layout from "../../layouts/Layout.astro";
+
+import type { GetStaticPaths } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { getCollection } from "astro:content";
+import ArticleLanguageSwitcher from '../../components/ArticleLanguageSwitcher.astro';
+
+/**
+ * Estimates the time it takes to read a post in minutes based on:
+ * - A reading speed of 200 words per minute
+ * - 10 seconds per image
+ * - 20 seconds per code block
+ *
+ * @param post The post to estimate the reading time for
+ */
+function timeToRead(post: CollectionEntry<"posts">): number {
+  const numWords = (post.body || "")
+    .replace(/.*\[(.*?)\].*/gm, "$1")
+    .replace(/```.*?```/gms, "")
+    .split(/\s+/).length;
+
+  const numImages = post.body?.match(/!\[/g)?.length || 0;
+  const numCodeblocks = post.body?.match(/``/g)?.length || 0;
+
+  return (
+    Math.ceil(numWords / 200) +
+    Math.ceil(numImages / 6) +
+    Math.ceil(numCodeblocks / 3)
+  );
+}
+
+// interface Props {
+//   post: CollectionEntry<'posts'>;
+// }
+
+// const { post } = Astro.props;
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("posts", (post) =>
+    import.meta.env.PROD ? post.data.draft !== true : true,
+  );
+
+  const paths = posts.map((post) => {
+    const [lang, page] = post.id.split("/");
+    return {
+      params: { lang, post: page },
+      props: post,
+    };
+  });
+  return paths;
+}) satisfies GetStaticPaths;
+
+const lang = getLangFromUrl(Astro.url);
+// if (lang === "bn") {
+// const loc = "bn-BD";
+// } else {
+//   const loc = "en-GB";
+// }
+const t = useTranslations(lang);
+
+const post = Astro.props;
+const { Content, headings } = await render(post);
+const tags = post.data.tags.map((tag) => tag.id);
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+  article={{
+    createdAt: post.data.createdAt,
+    updatedAt: post.data.updatedAt,
+  }}
+>
+  <div class="left" slot="left">
+    <Card class="tags-card">
+      <h2 class="no-mt">{t("article.topics")}</h2>
+      <ul class="tags-list">
+        {
+          Array.from(new Set(tags)).map((tag) => (
+            <li>
+              <a
+                class="blog-tag"
+                href={`/${lang}/articles?tags=${tag}`}
+                data-tag={tag}
+              >
+                {tag}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </Card>
+    {
+      post.data.toc ? (
+    <>
+          {/* Mobile TOC Button */}
+          <button class="toc-toggle-btn" id="tocToggle">
+            <span class="toc-icon">📜</span>
+            <span class="toc-label">{t("article.toc")}</span>
+          </button>
+
+          {/* TOC Card */}
+          <Card class="toc-card" id="tocCard">
+            <div class="toc-header">
+              <h2 class="no-mt">{t("article.toc")}</h2>
+              <button class="toc-close-btn" id="tocClose">✕</button>
+            </div>
+            <ol>
+              <li class="toc-li">
+                <a href={`#_top`} class="active">
+                  {post.data.title}
+                </a>
+              </li>
+              {headings.map((heading, i) => (
+                <li class="toc-li" data-depth={heading.depth}>
+                  <a href={`#${heading.slug}`}>{heading.text}</a>
+                </li>
+              ))}
+            </ol>
+          </Card>
+        </>
+      ) : null
+    }
+  </div>
+  <article slot="right" data-pagefind-body>
+    <Card>
+      <div class="article-header" id="_top" data-pagefind-ignore>
+        {
+          post.data.image ? (
+            <ImageGlow
+              quality={100}
+              class="article-image"
+              src={post.data.image}
+              alt={post.data.title}
+            />
+          ) : null
+        }
+        <div class="header">
+          <div>
+            <h1 class="no-mt article-h1">{post.data.title}</h1>
+          </div>
+          <div class="article-info">
+            <span
+              >{
+                post.data.createdAt
+                  .toLocaleDateString(`${lang}-BD-u-ca-islamic-civil`)
+                  .replace(t("date.replace"), "")
+              }</span
+            >
+            <span>/</span>
+            <span
+              >{timeToRead(post).toLocaleString(`${lang}-BD`)}
+              {
+                timeToRead(post) === 1
+                  ? t("article.minuteToRead")
+                  : t("article.minutesToRead")
+              }</span
+            >
+            <!-- <span>/</span> -->
+            <!-- <span>{t("article.topics")}: {post.data.tags.map((tag) => tag.id).join(", ")}</span> -->
+          </div>
+        </div>
+      </div>
+    </Card>
+    {
+      post.data.affiliate ? (
+        <Card class="aff_card">
+          <i>{t("article.affiliate")}</i>
+        </Card>
+      ) : null
+        }
+        <Card>
+
+            <ArticleLanguageSwitcher />
+
+            <Content />
+      {
+        post.data.affiliate ? (
+          <script>
+            const aff = document.getElementById("aff_link");
+            aff.addEventListener("click", () => {sa_event("aff_link")});
+          </script>
+        ) : null
+      }
+      <hr class="end-of-article" />
+      <a href=`/${lang}/articles` class="block-link" data-pagefind-ignore
+        >← {t("article.back")}</a
+      >
+    </Card>
+
+    <Card class="reactions-card">
+      <div>
+        <p id="feedback_title">{t("feedback.title")}</p>
+
+        <button class="reaction-btn good">👍</button>
+
+        <button class="reaction-btn bad">👎</button>
+
+        <button class="reaction-btn love">❤️</button>
+        <button class="reaction-btn excellent">⚡️</button>
+
+        <p
+          id="feedback_message"
+          data-success={t("feedback.success")}
+          data-error={t("feedback.error")}
+        >
+        </p>
+      </div>
+      <!-- <script>
+           const btn = document.getElementsByClassName("reaction-btn");
+           const titleElement = document.getElementById("feedback_title");
+           const messageElement = document.getElementById("feedback_message");
+
+           Array.from(btn).forEach((button) => {
+           button.addEventListener("click", () => {
+           remove();
+           feedback(button.classList[1]);
+           });
+           });
+
+           function remove() {
+           titleElement.remove();
+           Array.from(btn).forEach((button) => {
+           button.remove();
+           });
+           }
+
+           function feedback(reaction) {
+           try {
+           sa_event("feedback_" + reaction);
+           s_msg();
+           } catch (error) {
+           e_msg();
+           }
+           }
+
+           function s_msg() {
+           document.getElementById("feedback_message").innerHTML =
+           messageElement.dataset.success;
+           }
+
+           function e_msg() {
+           document.getElementById("feedback_message").innerHTML =
+           messageElement.dataset.error;
+           }
+           </script> -->
+    </Card>
+    {
+      lang === "bn" ? (
+        <Card class="comments-card-bn">
+          <div
+            class="comments"
+            style="display: flex; justify-content: center;"
+            data-pagefind-ignore
+          >
+            <script
+              async
+              src="https://telegram.org/js/telegram-widget.js?22"
+              data-telegram-discussion={`khalidershell/${post.data.telegram}`}
+              data-comments-limit="5"
+                data-color="1a73e8"
+              data-dark="1"
+            />
+          </div>
+        </Card>
+      ) : (
+        <Card class="comments-card-en">
+                 <div
+            class="comments"
+            style="display: flex; justify-content: center;"
+            data-pagefind-ignore
+          >
+                <!-- <script
+                     async
+                     src="https://comments.app/js/widget.js?3"
+                     data-comments-app-website="MLPUiwoX"
+                     data-limit="5"
+                     data-color="4285F4"
+                     data-outlined="1"
+                     data-dark="1"
+                     /> -->
+
+                <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion={`khalids_shell/${post.data.telegram}`} data-comments-limit="10" data-color="1a73e8" data-dark="1"></script>
+
+            </div>
+        </Card>
+        )
+        }
+  </article>
+</Layout>
+
+{
+  lang == "bn" ? (
+<script src="../../scripts/toc-bn.ts"></script>
+  ) : (
+<script src="../../scripts/toc-en.ts"></script>
+  )
+}
+
+<!-- <script src="../../scripts/toc-toggle.js" is:inline></script> -->
+
+<script is:inline>
+
+
+  // Mobile TOC Toggle
+  const tocToggle = document.getElementById('tocToggle');
+  const tocCard = document.getElementById('tocCard');
+  const tocClose = document.getElementById('tocClose');
+
+  if (tocToggle && tocCard && tocClose) {
+    tocToggle.addEventListener('click', () => {
+      tocCard.classList.add('toc-open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    tocClose.addEventListener('click', () => {
+      tocCard.classList.remove('toc-open');
+      document.body.style.overflow = '';
+    });
+
+    // Close when clicking TOC links
+    const tocLinks = tocCard.querySelectorAll('a');
+    tocLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        tocCard.classList.remove('toc-open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close on backdrop click
+    tocCard.addEventListener('click', (e) => {
+      if (e.target === tocCard) {
+        tocCard.classList.remove('toc-open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+
+</script>
+
+<!-- <style scoped> -->
+<!--   .tgme_widget_message_bubble_logo { -->
+<!--     display: none; -->
+<!--   } -->
+<!-- </style> -->
+<style is:global>
+  .header {
+    opacity: 0.8;
+  }
+
+  .tags-card {
+    /* position: sticky; */
+    /* top: 2rem; */
+    /* min-width: 0; */
+    margin-bottom: 1rem;
+  }
+
+  .toc-card {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .toc-card ol {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0;
+    list-style-type: none;
+    position: relative;
+  }
+
+  .toc-card ol li a {
+    color: #c7c7c7;
+    font-size: 0.925rem;
+    padding: 0.25rem 0.5rem;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .toc-card ol li a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  .toc-card ol li a.active {
+    color: white;
+    background: var(--primary);
+  }
+
+  .left {
+    height: 100%;
+    position: relative;
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  article table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+
+  article table th,
+  article table td {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #353535;
+    min-width: 100px; /* Prevent columns from being too narrow */
+  }
+
+  article table th {
+    background-color: #1a1a1a;
+    font-weight: 600;
+  }
+
+  .reactions-card {
+    display: none;
+    text-align: center;
+  }
+
+  .comments * {
+    border-color: #353535 !important;
+  }
+
+  /* Mobile TOC Toggle Button */
+  .toc-toggle-btn {
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 1rem;
+    z-index: 999;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, rgba(26, 115, 232, 0.95), rgba(66, 133, 244, 0.95));
+    border: 2px solid rgba(138, 180, 248, 0.3);
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(26, 115, 232, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .toc-toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(26, 115, 232, 0.6);
+  }
+
+  .toc-toggle-btn:active {
+    transform: translateY(0);
+  }
+
+  .toc-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .toc-label {
+    letter-spacing: 0.02em;
+  }
+
+  /* TOC Header with Close Button */
+  .toc-header {
+    justify-content: space-between;
+      /* align-items: center; */
+      margin-bottom: .5rem;
+  }
+
+  .toc-close-btn {
+    display: none;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .toc-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+  }
+
+  @media screen and (max-width: 640px) {
+    article {
+      gap: 1rem;
+    }
+
+    /* Show toggle button on mobile */
+    .toc-toggle-btn {
+      display: flex;
+    }
+
+    /* Hide TOC by default on mobile */
+    .toc-card {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      margin: 2.5vw;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Show TOC when open */
+    .toc-card.toc-open {
+      transform: translateX(0);
+    }
+
+    /* Show header and close button on mobile */
+    .toc-header {
+      display: flex;
+    }
+
+      /* Disable default bottom margin on phones */
+      .toc-header h2 {
+          margin-bottom: 0;
+      }
+
+    .toc-close-btn {
+      display: block;
+    }
+
+    .toc-card ol {
+      flex: 1;
+    }
+  }
+
+  @media screen and (min-width: 641px) {
+    .toc-card {
+      position: sticky;
+      top: 2rem;
+    }
+  }
+</style>
