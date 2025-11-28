@@ -9,8 +9,10 @@ const t = useTranslations(lang);
 <Layout title={"404"} description={t("error.description")} pagefindIgnore>
   <div class="notfound-container" slot="normal">
     <h1 class="text-glow">404</h1>
-    <p>{t("error.description")}</p>
-    <a class="block-link" href="/">← {t("error.back")}</a>
+    <!-- <p>{t("error.description")}</p>
+         <a class="block-link" href="/">← {t("error.back")}</a> -->
+    <p>This page could not be found</p>
+    <a class="block-link" href="/en">← Back to the homepage</a>
   </div>
 </Layout>
 <!-- <script> -->
