@@ -17,7 +17,7 @@ const otherLang = lang === 'en' ? 'bn' : 'en';
 
 const correspondingPost = allPosts.find(post => {
   const [postLang, postSlug] = post.id.split('/');
-  return postLang === otherLang && postSlug === currentSlug && post.data.draft != true;
+    return postLang === otherLang && postSlug === currentSlug && (import.meta.env.PROD ? data.draft !== true : true);
 });
 
 const hasTranslation = !!correspondingPost;
