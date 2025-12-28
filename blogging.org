@@ -1,1 +1,1 @@
-/home/rafi/.emacs.d/llm-chats/blogging.org
+/home/rafi/llm-chats/blogging.org
