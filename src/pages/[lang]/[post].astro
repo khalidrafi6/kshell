@@ -148,12 +148,16 @@ const tags = post.data.tags.map((tag) => tag.id);
             <h1 class="no-mt article-h1">{post.data.title}</h1>
           </div>
           <div class="article-info">
-            <span
-              >{
-                post.data.createdAt
-                  .toLocaleDateString(`${lang}-BD-u-ca-islamic-civil`)
+              <span
+              >{lang === "bn" ?
+                  post.data.createdAt
+                  .toLocaleDateString(`bn-BD-u-ca-islamic-civil`)
                   .replace(t("date.replace"), "")
-              }</span
+                  :
+                  post.data.createdAt
+                  .toLocaleDateString(`en-GB-u-ca-islamic-civil`)
+                  .replace(t("date.replace"), "")
+                  }</span
             >
             <span>/</span>
             <span
