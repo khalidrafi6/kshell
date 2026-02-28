@@ -23,7 +23,7 @@ import { spectreDark } from "./src/ec-theme";
 
 // https://astro.build/config
 const config = defineConfig({
-  site: "https://blog.khalidrafi.me",
+  site: "https://blog.khalidrafi.tech",
   output: "static",
   redirects: {
     "/[lang]/posts/[post]": "/[lang]/[post]",

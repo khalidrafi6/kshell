@@ -26,4 +26,4 @@ Allow: /*n/about
 User-agent: *
 Allow: /
 
-Sitemap: https://blog.khalidrafi.me/sitemap-index.xml
+Sitemap: https://blog.khalidrafi.tech/sitemap-index.xml
