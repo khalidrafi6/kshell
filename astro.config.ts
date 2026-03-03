@@ -1,5 +1,6 @@
 import { loadEnv } from "vite";
 import { defineConfig } from "astro/config";
+import cloudflare from '@astrojs/cloudflare';
 
 import expressiveCode from "astro-expressive-code";
 import mdx from "@astrojs/mdx";
@@ -24,6 +25,7 @@ import { spectreDark } from "./src/ec-theme";
 // https://astro.build/config
 const config = defineConfig({
   site: "https://blog.khalidrafi.tech",
+  adapter: cloudflare(),
   output: "static",
   redirects: {
     "/[lang]/posts/[post]": "/[lang]/[post]",
