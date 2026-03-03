@@ -151,12 +151,12 @@ const tags = post.data.tags.map((tag) => tag.id);
               <span
               >{lang === "bn" ?
                   post.data.createdAt
-                  .toLocaleDateString(`bn-BD-u-ca-islamic-civil`)
-                  .replace(t("date.replace"), "")
+                  .toLocaleDateString('bn-BD-u-ca-islamic-civil')
+                  .replace(t("date.replace"), "হিজরি")
                   :
                   post.data.createdAt
-                  .toLocaleDateString(`en-GB-u-ca-islamic-civil`)
-                  .replace(t("date.replace"), "")
+                  .toLocaleDateString('en-GB-u-ca-islamic-civil')
+                  .replace(t("date.replace"), "Hijri")
                   }</span
             >
             <span>/</span>
