@@ -1,6 +1,5 @@
-My technical blog, **Khalid's Shell**.
+My technical blog, *Khalid's Shell*.
 
-<br />
 Visit Now:
 
 - বাংলা: blog.khalidrafi.tech/bn
